@@ -121,5 +121,3 @@ def get_port_profit():
     print(json_res) #딕셔너리 형태로 포트폴리오 데이터 전송
 
     return json.dumps(json_res, ensure_ascii=False) 
-
-print(get_kospi_graph_data())
