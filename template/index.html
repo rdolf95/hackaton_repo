@@ -145,7 +145,7 @@
           <script>
             getData();
             async function getData() {
-              const BASEURL = 'http://127.0.0.1:8080/'
+              const BASEURL = 'http://3.38.251.51:8080/'
               const response = await fetch(BASEURL+'get_port_graph_data');
               const data = await response.json();
               console.log(data.length)
