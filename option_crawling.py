@@ -6,9 +6,9 @@ import calendar
 
 path = 'option/'
 
-option_name_list = pd.read_excel(path + '옵션명정리.xlsx', dtype={'name':str})
-isu_nm = option_name_list.iloc[42, 1]
-isu_nm_cd = option_name_list.iloc[42, 0]
+#option_name_list = pd.read_excel(path + '옵션명정리.xlsx', dtype={'name':str})
+#isu_nm = option_name_list.iloc[42, 1]
+#isu_nm_cd = option_name_list.iloc[42, 0]
 
 _alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 def calc_check_digit(number):
@@ -234,9 +234,13 @@ def option_crawl (option_type: str= '2', mat_yr: str= '2023',
     isu_srt_cd = isu_cd[0] + isu_cd[3:11]
     _, num_days = calendar.monthrange(int(isu_nm[9:13]), int(isu_nm[13:15].replace(' ', '')))
 
-    
+    option_df = crawling_krx_option(isu_nm, isu_cd, isu_srt_cd, isu_nm_cd, num_days)
+    option_df = option_df.reset_index()
 
-    return crawling_krx_option(isu_nm, isu_cd, isu_srt_cd, isu_nm_cd, num_days)
+    option_df = option_df.drop(['index', '대비', '시가', '고가', '저가', '내재변동성', '익일기준가', '거래량', '거래대금', '미결제약정'], axis=1)
+    option_df.columns = ['Date', 'Close']
+
+    return option_df.loc[0]
 
 
 df = option_crawl()

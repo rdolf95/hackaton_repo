@@ -147,11 +147,31 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h2 class="h2">주문체결</h2>
         </div>
+        <div class=select-box id = "select-box-2">
+          <span class=custom-span>종목</span> 
+          <label class="custom-input" for="styledSelect4"><input id="premium" name="options" value="KOSPI 콜 옵션" disabled>
+          </input></label>
+        </div>
         <div class=select-box id = "select-box-1">
-            <span class=custom-span>종목</span>
-            <label class="custom-select" for="styledSelect1"><select id="styledSelect1" name="options">
+            <span class=custom-span>만기</span>
+            <label class="year-select" for="styledSelect1"><select id="maturity_month" name="options">
               <option value="">
-                Select an option
+                Year
+              </option>
+              <option value="2023">
+                2023
+              </option>
+              <option value="2024">
+                2024
+              </option>
+              <option value="2025">
+                2025
+              </option>
+
+            </select></label>
+            <label class="day-select" for="styledSelect1"><select id="maturity_month" name="options">
+              <option value="">
+                Month
               </option>
               <option value="1">
                 Option 1
@@ -188,44 +208,14 @@
             </select></label>
         </div>
         <div class=select-box id = "select-box-2">
-            <span class=custom-span>수량</span>
-            <label class="custom-select" for="styledSelect3"><select id="styledSelect3" name="options">
-              <option value="">
-                Select an option
-              </option>
-              <option value="1">
-                Option 1
-              </option>
-              <option value="2">
-                Option 2
-              </option>
-              <option value="3">
-                Option 3
-              </option>
-              <option value="4">
-                Option 4
-              </option>
-            </select></label>
+            <span class=custom-span>계약수</span>
+            <label class="custom-input" for="styledSelect3"><input id="amount" name="options" value="10">
+            </input></label>
         </div>
         <div class=select-box id = "select-box-2">
             <span class=custom-span>프리미엄</span> 
-            <label class="custom-select" for="styledSelect4"><select id="styledSelect4" name="options">
-              <option value="">
-                Select an option
-              </option>
-              <option value="1">
-                Option 1
-              </option>
-              <option value="2">
-                Option 2
-              </option>
-              <option value="3">
-                Option 3
-              </option>
-              <option value="4">
-                Option 4
-              </option>
-            </select></label>
+            <label class="custom-input" for="styledSelect4"><input id="premium" name="options" value="10.0" disabled>
+            </input></label>
         </div>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2" float:right>
@@ -254,7 +244,8 @@
       //비동기통신해라.....
       $.ajax({  url: "/get_premium" ,
                 type : "post",
-                data: {"strike_price" : $("#strike_price").val() } ,
+                data: {"strike_price" : $("#strike_price").val(),
+                       "maturity_month" : $("#maturity_month").val() } ,
                 success: function(flask_return_str) {
                       console.log(flask_return_str);
                       //------------String -- 객체 로 변환 -------------
