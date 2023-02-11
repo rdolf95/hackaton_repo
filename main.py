@@ -38,7 +38,13 @@ app = Flask(__name__, template_folder="template", static_folder="static")
 # ====================================================
 #                    메인 페이지 by 최상현
 # ====================================================
+
+
 @app.route('/')
+def login():
+    return render_template("login.html")
+
+@app.route('/buy_option')
 def index():
     return render_template("buy_option.html")
 
@@ -46,9 +52,17 @@ def index():
 def dashboard():
     return render_template("index.html")
 
-@app.route('/login')
-def login():
-    return render_template("login.html")
+@app.route('/strategy')
+def strategy():
+    return render_template("strategySelect.html")
+
+@app.route('/strategySelectUp')
+def strategyUp():
+    return render_template("strategySelectUp.html")
+
+@app.route('/strategySelectDown')
+def strategyDown():
+    return render_template("strategySelectDown.html")
 
 @app.route('/get_premium', methods=['post'])
 def get_premium():
