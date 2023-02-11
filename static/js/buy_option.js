@@ -97,15 +97,60 @@
   })
 })()
 
-function add_option(year) {
-  let select = document.querySelector("#maturity_month");
+function add_month_option(year) {
+  let select_month = document.querySelector("#maturity_month");
+  
   var objOption = document.createElement("option");
+  objOption.text = 'Month';
+  objOption.value = -1;
+  select_month.options.add(objOption);
 
   if(year == 2023){
-    for()
+    for (let i = 3; i <= 9; i++) {
+      var objOption = document.createElement("option");
+      objOption.text = i;
+      objOption.value = i;
+      select_month.options.add(objOption);
+    }
+    var objOption = document.createElement("option");
+    objOption.text = 12;
+    objOption.value = 12;
+    select_month.options.add(objOption);
   }
+  else if(year == 2024){
+    var objOption = document.createElement("option");
+    objOption.text = 6;
+    objOption.value = 6;
+    select_month.options.add(objOption);
 
-  objOption.text = selectEl.length+1 + "번";
-  objOption.value = selectEl.length+1;
-  selectEl.options.add(objOption);
+    objOption = document.createElement("option");
+    objOption.text = 12;
+    objOption.value = 12;
+    select_month.options.add(objOption);
+  }
+  else if(year == 2025){
+    var objOption = document.createElement("option");
+    objOption.text = 12;
+    objOption.value = 12;
+    select_month.options.add(objOption);
+  }
+}
+
+function default_strike_price(){
+  let strike_price = document.querySelector("#strike_price");
+  var objOption = document.createElement("option");
+  objOption.text = '행사가격';
+  objOption.value = -1;
+  strike_price.options.add(objOption);
+}
+
+function add_strike_price_option() {
+  let strike_price = document.querySelector("#strike_price");
+  
+  for (let i = 170.0; i <= 450.0; i = i+2.5) {
+    var objOption = document.createElement("option");
+    objOption.text = i.toFixed(1);
+    objOption.value = i;
+    strike_price.options.add(objOption);
+  }
 }

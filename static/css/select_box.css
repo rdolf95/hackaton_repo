@@ -46,7 +46,7 @@
   display: block;
   max-width: 100px;
   max-height: 40px;
-  min-width: 20px;
+  min-width: 80px;
   margin: 0 auto;
   border: 1px solid #f3f3f39d;
   background-color: #eeeeee;
@@ -176,6 +176,7 @@
 .order-div {
   width: 400px;
   float: left;
+  margin-right: 50px;
 }
 
 .profit-div {

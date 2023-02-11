@@ -21,23 +21,32 @@ def get_port_graph_data():
     prev_month = prev_month.strftime('%Y%m%d')
     difflist = [0 for _ in range(30)]
 
+    datelist = [0 for _ in range(30)]
+
     #내가 보유한 주식정보(포트폴리오) DB에서 가져옴
-    for i in row_list:
+    diff = []
+    for i in row_list:  # i: 종목별
         tick = i[1]
         num = i[2]
         buy = i[3]
         diff = get_stock_price(fromdate=prev_month, todate=today, ticker= tick)
 
-        for j in range(len(diff)):
+        for j in range(len(diff)):  # j : 날짜별
             difflist[j] += (diff.loc[j][1] - buy) * num
 
-    for j in range(len(difflist)):
-        difflist[j] = str(difflist[j])
+    for j in range(len(diff)):  # j : 날짜별
+        datelist[j] = diff.loc[j][0]
 
-    print(difflist)
+    result = []
+
+    for j in range(len(datelist)):
+        if datelist[j] != 0:
+            result.append((datelist[j].strftime("%Y/%m/%d"), str(difflist[j])))
+
+    print(result)
     # difflist : 최근 30일간의 내 portfolio 수익률을 list로 저장 (영업일이 아닌 날은 마지막에 0으로 들어감)
 
-    return json.dumps(difflist) #리스트 형태로 데이터 전송
+    return json.dumps(result) #리스트 형태로 데이터 전송
 
 
 def get_etf_graph_data():
