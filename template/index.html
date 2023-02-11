@@ -193,14 +193,21 @@
               const BASEURL = 'http://127.0.0.1:8080/'
               const response = await fetch(BASEURL+'get_kospi_graph_data');
               const data = await response.json();
+              const date = []
+              const value = []
+              for(let i=0; i<=data.length; i++){
+                if(data[i] === 0) break;
+                date.push(data[i][0])
+                value.push(data[i][1])
+              }
+              console.log(date)
               new Chart(document.getElementById("myChartTest2"), {
                 type: 'line',
                 data: {
-                    labels: data,
+                    labels: date,
                     datasets: [
                       {
-                          // label: "Population (millions)",
-                          data: data,
+                          data: value,
                           lineTension: 0,
                           backgroundColor: 'transparent',
                           borderColor: '#007bff',
@@ -234,6 +241,7 @@
               <th scope="col">보유수량</th>
               <th scope="col">매입가</th>
               <th scope="col">현재가</th>
+              <th scope="col">수익률</th>
               <th scope="col">Data Analysis</th>
             </tr>
           </thead>
@@ -247,6 +255,7 @@
             const BASEURL = 'http://127.0.0.1:8080/'
             const response = await fetch(BASEURL+'get_port_profit');
             const data = await response.json();
+            console.log(data)
             let cnt = 1;
             for(key in data){
               document.querySelector("tbody").innerHTML +=
@@ -256,6 +265,7 @@
                 "<td>" + data[key].num + "</td>" +
                 "<td>" + data[key].buy_price + "</td>" +
                 "<td>" + data[key].cur_price + "</td>" +
+                "<td>" + Number(data[key].profit).toFixed(2) + "%"+ "</td>" +
                 '<td>\
                   <button type="button" class="btn btn-outline-success" type="button" onclick=getUserName('+cnt+')>Success</button>\
                 </td>'
