@@ -32,7 +32,7 @@ app = Flask(__name__, template_folder="template", static_folder="static")
 @app.route('/')
 def index():
 
-    return render_template("index.html")
+    return render_template("login.html")
 
 @app.route('/strategy')
 def strategy():
