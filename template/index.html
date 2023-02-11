@@ -156,16 +156,24 @@
             getData();
             async function getData() {
               const BASEURL = 'http://127.0.0.1:8080/'
-              const response = await fetch(BASEURL+'get_kospi_graph_data');
+              const response = await fetch(BASEURL+'get_port_graph_data');
               const data = await response.json();
+              console.log(data.length)
+              const date = []
+              const value = []
+              for(let i=0; i<data.length; i++){
+                // console.log(data[i])
+                date.push(data[i][0])
+                value.push(data[i][1])
+              }
+              // console.log(date)
               new Chart(document.getElementById("myChartTest"), {
                 type: 'line',
                 data: {
-                    labels: data,
+                    labels: date,
                     datasets: [
                       {
-                          // label: "Population (millions)",
-                          data: data,
+                          data: value,
                           lineTension: 0,
                           backgroundColor: 'transparent',
                           borderColor: '#007bff',
@@ -178,7 +186,7 @@
                     legend: { display: false },
                     title: {
                       display: true,
-                      text: 'My 포트폴리오 수익률'
+                      text: 'My 포트폴리오'
                     }
                 }
               });
@@ -195,12 +203,11 @@
               const data = await response.json();
               const date = []
               const value = []
-              for(let i=0; i<=data.length; i++){
+              for(let i=0; i<data.length; i++){
                 if(data[i] === 0) break;
                 date.push(data[i][0])
                 value.push(data[i][1])
               }
-              console.log(date)
               new Chart(document.getElementById("myChartTest2"), {
                 type: 'line',
                 data: {
@@ -255,7 +262,6 @@
             const BASEURL = 'http://127.0.0.1:8080/'
             const response = await fetch(BASEURL+'get_port_profit');
             const data = await response.json();
-            console.log(data)
             let cnt = 1;
             for(key in data){
               document.querySelector("tbody").innerHTML +=

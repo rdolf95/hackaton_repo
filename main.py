@@ -42,6 +42,10 @@ app = Flask(__name__, template_folder="template", static_folder="static")
 def index():
     return render_template("buy_option.html")
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template("index.html")
+
 @app.route('/get_premium', methods=['post'])
 def get_premium():
 
