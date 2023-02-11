@@ -177,16 +177,14 @@
       <script language ='JAVASCRIPT'>
 
         function up(){
-            document.write("Hello World");
+          document.getElementById("test1").innerHTML = "Hello！";
         }
       
         function down(){
-          document.ig.src = "callbuy.PNG";
-          document.images[0].width = 200;
+          document.getElementById("test1").innerHTML = "Hello！";
         }
         function sidewalk(){
-          document.ig.src = "callbuy.PNG";
-          document.images[0].width = 200;
+          document.getElementById("test1").innerHTML = "Hello！";
         }
       </script>
       <div style="display:flex; justify-content: center;">
@@ -214,9 +212,17 @@
               <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
             </svg>
           </button>
-          <div style="position:absolute; width:200px; height:200px; top:300px; left:300;">
+          <div style="position:absolute; width: 600px; height:400px; top:300px; left:600px;">
             <body>
-              <img name="ig" src="/static/images/Check.PNG" width="500" height="200"> 
+              <form>
+                <br><br><br>
+                <hr>
+                <span id="test1" style="font-size: 100%;">
+                  <blockquote>예측하는 시장 상황을 눌러주세요.</blockquote>
+                </span>
+                <br/>
+                <br/>
+            </form>
             </body>
             
           </div>
