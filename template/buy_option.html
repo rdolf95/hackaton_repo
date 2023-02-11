@@ -10,13 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <link rel="stylesheet" href="css/select_box.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-    
-
-    
-
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/select_box.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -73,7 +70,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="buy_option.css" rel="stylesheet">
+    <link href="/static/css/buy_option.css" rel="stylesheet">
   </head>
   <body>
     
@@ -172,7 +169,7 @@
         </div>
         <div class=select-box id = "select-box-2">
             <span class=custom-span>행사가격</span>
-            <label class="custom-select" for="styledSelect2"><select id="styledSelect2" name="options">
+            <label class="custom-select" for="styledSelect2"><select id="strike_price" name="options">
               <option value="">
                 Select an option
               </option>
@@ -250,6 +247,38 @@
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+  
+    <script>
+    $(document).on('change', '#strike_price', function() {
+      //비동기통신해라.....
+      $.ajax({  url: "/get_premium" ,
+                type : "post",
+                data: {"strike_price" : $("#strike_price").val() } ,
+                success: function(flask_return_str) {
+                      console.log(flask_return_str);
+                      //------------String -- 객체 로 변환 -------------
+                      flask_return_list  = JSON.parse(flask_return_str)  //jquery
+                      console.log(flask_return_list);
+
+                      html_str = "<table border=1  bordercolor=#EDEDED>"
+                      //-------------------------------------------------
+                      $.each(flask_return_list, function( i, v ) {
+                          //i 0   v ['smith', 1400]
+                          //i 1   v ['allen', 4000]
+                          console.log( v[0] , v[1]);
+                          html_str += "<tr><td><button style='background-color: #EDEDED;border:0; outline:0;' class='ajax_com_name_btn' value="+v[0]+" id="+i+"_name >"+v[1]+"</button></td></tr>"    //script
+                      });
+                      html_str += "</table>"
+                      $( "#resdiv" ).empty();
+                      $( "#resdiv" ).html(html_str);
+                 },
+                error: function(res){  } ,
+                crossDomain: true
+
+            });
+  });
+  </script>
+  
   </body>
 </html>
