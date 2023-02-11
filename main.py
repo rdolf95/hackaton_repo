@@ -23,8 +23,7 @@ import math
 import sqlite3
 from stock_price import get_stock_price, get_etf_price, get_kospi_price
 
-
-
+import port_data
 
 # ====================================================
 #                      라우터
@@ -224,9 +223,9 @@ def finance_data(stock_code):
 
 
 
-@app.route('/', methods=['get'])
-def index():
-    return render_template("buy_option.html")
+# @app.route('/', methods=['get'])
+# def index():
+#     return render_template("buy_option.html")
 
 @app.route('/get_premium', methods=['post'])
 def get_premium():
@@ -238,8 +237,18 @@ def get_premium():
 
     return json.dumps(  'hello'  ) #리스트 형태로 데이터 전송
 
+@app.route('/get_port_graph_data')
+def get_port_graph_data():
+    return port_data.get_port_graph_data()
 
+@app.route('/get_kospi_graph_data')
+def get_kospi_graph_data():
+    return port_data.get_kospi_graph_data()
 
+@app.route('/get_port_profit')
+def get_port_profit():
+    return json.loads(port_data.get_port_profit())
+    
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=8080, threaded=True)

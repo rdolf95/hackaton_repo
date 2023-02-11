@@ -8,7 +8,7 @@
   // Graphs
   const ctx = document.getElementById('myChart')
   // eslint-disable-next-line no-unused-vars
-  const myChart = new Chart(ctx, {
+  new Chart(ctx, {
     type: 'line',
     data: {
       labels: [
@@ -40,6 +40,12 @@
     options: {
       scales: {
         yAxes: [{
+          ticks: {
+            beginAtZero: false
+          }
+        }],
+        xAxes: [{
+          show : false,
           ticks: {
             beginAtZero: false
           }

@@ -151,10 +151,74 @@
         </div>
       </div>
         <div style="float:left; width:33%; height:60;" >
-          <canvas id="myChart" width="100" height="70" ></canvas>
+          <canvas id="myChartTest" width="100" height="70" ></canvas>
+          <script>
+            getData();
+            async function getData() {
+              const BASEURL = 'http://127.0.0.1:8080/'
+              const response = await fetch(BASEURL+'get_kospi_graph_data');
+              const data = await response.json();
+              new Chart(document.getElementById("myChartTest"), {
+                type: 'line',
+                data: {
+                    labels: data,
+                    datasets: [
+                      {
+                          // label: "Population (millions)",
+                          data: data,
+                          lineTension: 0,
+                          backgroundColor: 'transparent',
+                          borderColor: '#007bff',
+                          borderWidth: 4,
+                          pointBackgroundColor: '#007bff'
+                      }
+                    ]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                      display: true,
+                      text: 'My 포트폴리오 수익률'
+                    }
+                }
+              });
+          }
+          </script>
         </div>
         <div style="float:left; width:66%; height:70;">
-          <canvas id="myChart2" width="100" height="35"></canvas>
+          <canvas id="myChartTest2" width="100" height="35"></canvas>
+          <script>
+            getData();
+            async function getData() {
+              const BASEURL = 'http://127.0.0.1:8080/'
+              const response = await fetch(BASEURL+'get_kospi_graph_data');
+              const data = await response.json();
+              new Chart(document.getElementById("myChartTest2"), {
+                type: 'line',
+                data: {
+                    labels: data,
+                    datasets: [
+                      {
+                          // label: "Population (millions)",
+                          data: data,
+                          lineTension: 0,
+                          backgroundColor: 'transparent',
+                          borderColor: '#007bff',
+                          borderWidth: 4,
+                          pointBackgroundColor: '#007bff'
+                      }
+                    ]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                      display: true,
+                      text: 'KOSPI 200 지수'
+                    }
+                }
+              });
+          }
+          </script>
         </div>
       <!-- <div>
         <button><a href="/strategy">TEST</a></button>
@@ -174,58 +238,33 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>삼성전자</td>
-              <td>005930</td>
-              <td>random</td>
-              <td>data</td>
-              <td>data</td>
-              <td>
-                <button type="button" class="btn btn-outline-success" onclick=getUserName(1)>Success</button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,001</td>
-              <td>005930</td>
-              <td>random</td>
-              <td>data</td>
-              <td>data</td>
-              <td>
-                <button type="button" class="btn btn-outline-success" type="button" onclick=getUserName(2)>Success</button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,001</td>
-              <td>005930</td>
-              <td>random</td>
-              <td>data</td>
-              <td>data</td>
-              <td>
-                <button type="button" class="btn btn-outline-success" type="button" onclick=getUserName(3)>Success</button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,001</td>
-              <td>005930</td>
-              <td>random</td>
-              <td>data</td>
-              <td>data</td>
-              <td>
-                <button type="button" class="btn btn-outline-success" type="button" onclick=getUserName(4)>Success</button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,001</td>
-              <td>005930</td>
-              <td>random</td>
-              <td>data</td>
-              <td>data</td>
-              <td>
-                <button type="button" class="btn btn-outline-success" type="button" onclick=getUserName(5)>Success</button>
-              </td>
-            </tr>
           </tbody>
         </table>
+        <script>
+          fillTable()
+          
+          async function fillTable(){
+            const BASEURL = 'http://127.0.0.1:8080/'
+            const response = await fetch(BASEURL+'get_port_profit');
+            const data = await response.json();
+            let cnt = 1;
+            for(key in data){
+              document.querySelector("tbody").innerHTML +=
+                "<tr>"+
+                "<td>" + key + "</td>" +
+                "<td>" + data[key].ticker + "</td>" +
+                "<td>" + data[key].num + "</td>" +
+                "<td>" + data[key].buy_price + "</td>" +
+                "<td>" + data[key].cur_price + "</td>" +
+                '<td>\
+                  <button type="button" class="btn btn-outline-success" type="button" onclick=getUserName('+cnt+')>Success</button>\
+                </td>'
+                "</tr>"
+              cnt++;
+            }
+          }
+          
+        </script>
       </div>
     </main>
   </div>
