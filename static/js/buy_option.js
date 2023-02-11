@@ -51,3 +51,16 @@
     }
   })
 })()
+
+function add_option(year) {
+  let select = document.querySelector("#maturity_month");
+  var objOption = document.createElement("option");
+
+  if(year == 2023){
+    for()
+  }
+
+  objOption.text = selectEl.length+1 + "번";
+  objOption.value = selectEl.length+1;
+  selectEl.options.add(objOption);
+}

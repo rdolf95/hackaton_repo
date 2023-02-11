@@ -70,9 +70,10 @@ def get_kospi_graph_data():
     kospiDiffList = [0 for _ in range(30)]
 
     print(kospi_diff)
+    
 
     for i in range(len(kospi_diff)):
-        kospiDiffList[i] = str(kospi_diff.loc[i][1])
+        kospiDiffList[i] = (str(kospi_diff.loc[i][0].strftime("%Y/%m/%d")), str(kospi_diff.loc[i][1]))
 
     print(kospiDiffList)
     # kospiDiffList : 최근 30일간의 kospi 데이터를 list로 저장 (영업일이 아닌 날은 마지막에 0으로 들어감)
@@ -120,3 +121,5 @@ def get_port_profit():
     print(json_res) #딕셔너리 형태로 포트폴리오 데이터 전송
 
     return json.dumps(json_res, ensure_ascii=False) 
+
+print(get_kospi_graph_data())

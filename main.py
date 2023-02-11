@@ -8,6 +8,7 @@ from pykrx import stock
 import math
 import sqlite3
 from stock_price import get_stock_price, get_etf_price, get_kospi_price
+from option_crawling import option_crawl
 
 
 
@@ -26,12 +27,19 @@ def index():
 @app.route('/get_premium', methods=['post'])
 def get_premium():
 
-    print("get premium!")
+    print("got premium!")
+    strike_price = request.form.get('strike_price')
+    mat_month = request.form.get('maturity_month')
 
-    str = request.form.get('strike_price')
-    print(str)
+    print(strike_price, mat_month)
+    strike_price = '325.0'
+    mat_month = '3'
 
-    return json.dumps(  'hello'  ) #리스트 형태로 데이터 전송
+    option_price = option_crawl (mat_month= mat_month, strike_price= strike_price)[1]
+    #종가
+
+
+    return json.dumps(str(option_price))
 
 
 
