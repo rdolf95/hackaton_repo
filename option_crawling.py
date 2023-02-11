@@ -235,6 +235,8 @@ def option_crawl (option_type: str= '2', mat_yr: str= '2023',
     _, num_days = calendar.monthrange(int(isu_nm[9:13]), int(isu_nm[13:15].replace(' ', '')))
 
     option_df = crawling_krx_option(isu_nm, isu_cd, isu_srt_cd, isu_nm_cd, num_days)
+
+    print(option_df)    
     option_df = option_df.reset_index()
 
     option_df = option_df.drop(['index', '대비', '시가', '고가', '저가', '내재변동성', '익일기준가', '거래량', '거래대금', '미결제약정'], axis=1)
@@ -242,8 +244,4 @@ def option_crawl (option_type: str= '2', mat_yr: str= '2023',
 
     return option_df.loc[0]
 
-
-df = option_crawl()
-
-print(df)
 #print('전일 종가: ', df.loc[0]['종가'])

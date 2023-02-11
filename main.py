@@ -22,18 +22,15 @@ app = Flask(__name__, template_folder="template", static_folder="static")
 
 @app.route('/', methods=['get'])
 def index():
-    return render_template("buy_option.html")
+    return render_template("buy_option.html", cur_kospi = 325.0)
 
 @app.route('/get_premium', methods=['post'])
 def get_premium():
 
-    print("got premium!")
     strike_price = request.form.get('strike_price')
     mat_month = request.form.get('maturity_month')
 
     print(strike_price, mat_month)
-    strike_price = '325.0'
-    mat_month = '3'
 
     option_price = option_crawl (mat_month= mat_month, strike_price= strike_price)[1]
     #종가
