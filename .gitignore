@@ -2,3 +2,5 @@ option/
 옵션명정리*
 .DS_Store
 __pycache__/*
+test_files/
+__pycache__/

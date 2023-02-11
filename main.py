@@ -18,6 +18,13 @@ com_df=pd.read_csv('com_df.csv',
                    parse_dates=['listed_date', '상장일'])
 
 
+from pykrx import stock
+import math
+import sqlite3
+from stock_price import get_stock_price, get_etf_price, get_kospi_price
+
+
+
 
 # ====================================================
 #                      라우터
@@ -217,6 +224,19 @@ def finance_data(stock_code):
 
 
 
+@app.route('/', methods=['get'])
+def index():
+    return render_template("buy_option.html")
+
+@app.route('/get_premium', methods=['post'])
+def get_premium():
+
+    print("get premium!")
+
+    str = request.form.get('strike_price')
+    print(str)
+
+    return json.dumps(  'hello'  ) #리스트 형태로 데이터 전송
 
 
 
