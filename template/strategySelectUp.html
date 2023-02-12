@@ -80,17 +80,12 @@
   </head>
   <body>
     
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" >
-      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/dashboard"><img src="/static/images/hedge.PNG" class="img-thumbnail" style="width:6rem;"/></a>
+    <header class="navbar bg-body-trtiary sticky-top flex-md-nowrap p-0 shadow" style="background-color: rgb(236,109,30);" >
+      <a class="navbar col-md-3 col-lg-2 me-0 px-3 fs-6" href="/dashboard"><img src="/static/images/hedge.PNG" class="img-thumbnail" style="width:6rem;"/></a>
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-      <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="#">Sign out</a>
-        </div>
-      </div>
+    
     </header>
     
     <div class="container-fluid">
@@ -99,21 +94,21 @@
           <div class="position-sticky pt-3 sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/dashboard">
+                <a class="nav-link" aria-current="page" href="/dashboard">
                   <span data-feather="home" class="align-text-bottom"></span>
                   홈
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link active" aria-current="page" href="/strategy" style="color: rgb(236,109,30);">
                   <span data-feather="file" class="align-text-bottom"></span>
-                  거래내역
+                  옵션 포트폴리오 구성하기
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                  포트폴리오
+                  거래내역
                 </a>
               </li>
             </ul>
@@ -132,7 +127,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/">
                   <span data-feather="file-text" class="align-text-bottom"></span>
                   로그아웃
                 </a>
@@ -199,9 +194,6 @@
 
             <button type="button" class="btn btn-primary position-relative" onclick = "location.href = '/buy_option'">
               풋 매도 하러 가기
-              <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                <span class="visually-hidden">New alerts</span>
-              </span>
               </a>
             </button>
           </div>
