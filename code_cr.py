@@ -25,7 +25,7 @@ def select_same_industry(corp_name):
 
 
 
-#  -------- 네이버증권 연관기업 코드(hjh)
+#  -------- 네이버증권 연관기업 코드
 def relate_code_crawl(co):
     #연관 종목코드 있는 페이지 불러오기
     url='https://finance.naver.com/item/main.naver?code='+str(co)
@@ -113,7 +113,6 @@ def yh_code_to_nm(yh_code):
 
 
 # -------- Balance Sheets Crawling(재무제표 크롤링)
-# 220220 수정
 # 1) 매개변수 stock_code로 축약
 # 2) kind로 특정 테이블 지정하는 대신 데이터프레임 리스트 전체 반환
 # 3) '~계산에 참여한 계정 펼치기' 제거는 선택사항으로 둠
@@ -148,7 +147,6 @@ def bs_craw(stock_code, clear_name=False):  # ------- 검색과 연동해서 입
 
 
 # ------- 네이버 금융
-# 220220 수정
 # 1) 매개변수 stock_code로 축약
 # 2) kind로 특정 테이블 지정하는 대신 데이터프레임 리스트 전체 반환
 def fn_craw(stock_code):
@@ -180,10 +178,8 @@ def fn_craw(stock_code):
 #                      지표 선정
 #                   ==============
 
-# 220222 날씨 수정 시작 ---------------------------------------------
 
 # -------- 지표 선정
-# 220220 수정
 # 1) 매개변수 stock_code로 축약
 # 2) 데이터프레임 하나가 아닌 리스트로 받아오기때문에 kind 제거하고 직접 선택해줌
 # 3) sli_df_y, sil_df_q 에서 '-' 가공 시 if 조건에 따라 처리하는 대신 lambda와 re.sub 이용
@@ -201,7 +197,7 @@ def idv_radar_weather_data(stock_code):
     gcode = stock_code
     nm = stc_code_to_nm(stock_code)
 
-    sil_df = fn_craw(gcode)[3]  # 3: 기업실적정보 재무제표 (220220 수정)
+    sil_df = fn_craw(gcode)[3]  # 3: 기업실적정보 재무제표
     foreign_ms = fn_craw(gcode)[2].loc[1, '외국인']  # 2 : 외국인, 기관 거래 정보
     giguan_ms = fn_craw(gcode)[2].loc[1, '기관']  # 2 : 외국인, 기관 거래 정보
 
@@ -280,11 +276,9 @@ def idv_radar_weather_data(stock_code):
 # 수정수정수정
 
 # -------- 관련 기업 지표 선정(상대적 비율 기준)
-# 220220 수정
 # 1) 매개변수 stock_code로 축약
 # 2) dict 대신 array로 반환, 기업 이름(nm도 반환)
 
-# 220222 날씨
 
 def relate_radar_weather_data(stock_code):
     label_list = ['배당성향', '유동성', '건전성', '수익성', '성장성']
@@ -345,14 +339,12 @@ def relate_radar_weather_data(stock_code):
     return label_list, radar_dict_list, weather_list[0], foreign_ms, giguan_ms
 
 
-# 220222 날씨 수정 끝 ---------------------------------------------
 
 #                   ==============
 #                      지표 선정
 #                   ==============
 
 # -------- 지표 선정
-# 220220 수정
 # 1) 매개변수 stock_code로 축약
 # 2) 데이터프레임 하나가 아닌 리스트로 받아오기때문에 kind 제거하고 직접 선택해줌
 # 3) sli_df_y, sil_df_q 에서 '-' 가공 시 if 조건에 따라 처리하는 대신 lambda와 re.sub 이용
@@ -370,7 +362,7 @@ def idv_radar_data(stock_code):
     gcode = stock_code
     nm = stc_code_to_nm(stock_code)
 
-    sil_df = fn_craw(gcode)[3]  # 3: 기업실적정보 재무제표 (220220 수정)
+    sil_df = fn_craw(gcode)[3]  # 3: 기업실적정보 재무제표
 
     if (sil_df.iloc[0:8, 3].isna().sum()) > 0:  # 표 안 가르고 계산하는 건 신규 상장 기업은 정보가 아예 없기 때문
         pass
@@ -427,7 +419,6 @@ def idv_radar_data(stock_code):
 
 
 # -------- 관련 기업 지표 선정(상대적 비율 기준)
-# 220220 수정
 # 1) 매개변수 stock_code로 축약
 # 2) dict 대신 array로 반환, 기업 이름(nm도 반환)
 def relate_radar_data(stock_code):
@@ -462,29 +453,6 @@ def relate_radar_data(stock_code):
     return label_list, dict_list
 
 
-# -------- 관련 기업 지표 선정(원본)
-
-# def relate_radar_data(yh_code=None, corp_name=None, stock_code=None):
-#     label_list=['배당성향', '유동성', '건전성', '수익성', '성장성']
-#     dict_list = []
-#
-#     # 주식 코드로 변환
-#     gcode = 0
-#     if yh_code != None:
-#         gcode = yh_code_to_fn_gicode(yh_code)
-#     elif corp_name != None:
-#         gcode = nm_to_fn_gicode(corp_name)
-#     elif stock_code != None:
-#         gcode = stock_code
-#
-#     relate_corp = relate_code_crawl(co=gcode)
-#
-#     dict_list = [idv_radar_data(stock_code=stcd) for stcd in relate_corp]
-#
-#     dict_list = [x for x in dict_list if x is not None]
-#
-#
-#     return label_list, dict_list
 
 
 #                   ==============
@@ -492,7 +460,6 @@ def relate_radar_data(stock_code):
 #                   ==============
 
 # -------- 매출, 당기순이익 추이 그래프
-# 220220 수정
 # 1) 매개변수 stock_code로 축약
 # 2) 크롤링한 데이터는 list로 받아오므로 kind 없애고 직접 인덱스 처리
 
@@ -620,7 +587,7 @@ def invest_opinion(gcode):
         return ((int(a)+int(b)/100)/5)*100 #의견 점수 구한 후 백분율로 다시 변환
     except ValueError:
         return 0.1
-#최상현 함수
+
 def crawl_ifrs(gcode):
     url = "http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&gicode=A"+gcode+"&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=701"
     table_list = pd.read_html(url, encoding='UTF-8')
