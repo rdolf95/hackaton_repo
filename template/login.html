@@ -6,14 +6,14 @@
   <div id="container" class="container">
     <!-- FORM SECTION -->
     <div class="row">
-      <!-- SIGN UP -->
+      <!-- 회원가입 클릭시 나오는 새로운 창 -->
       <div class="col align-items-center flex-col sign-up">
         <div class="form-wrapper align-items-center">
           <div class="form sign-up">
             <div class="input-group">
               <i class='bx bxs-user'></i>
               <!-- 사용자 ID -->
-              <input type="text" placeholder="Username">
+              <input type="text" placeholder="ID">
             </div>
             <div class="input-group">
               <i class='bx bx-mail-send'></i>
@@ -26,17 +26,18 @@
             </div>
             <div class="input-group">
               <i class='bx bxs-lock-alt'></i>
-              <input type="password" placeholder="Confirm password">
+              <input type="password" placeholder="Password Confirm">
             </div>
             <button>
-              Sign up
+              회원가입
             </button>
+
             <p>
               <span>
-                Already have an account?
+                이미 계정이 있으신가요?
               </span>
               <b onclick="toggle()" class="pointer">
-                Sign in here
+                로그인
               </b>
             </p>
           </div>
@@ -44,30 +45,33 @@
       
       </div>
       <!-- END SIGN UP -->
+
       <!-- SIGN IN 버튼-->
       <div class="col align-items-center flex-col sign-in">
+        <!--3조 로고-->
+        <img src="/static/images/logo2.PNG" style="width:150px; height:150px;">
         <div class="form-wrapper align-items-center">
           <div class="form sign-in">
             <div class="input-group">
               <i class='bx bxs-user'></i>
-              <input type="text" placeholder="Username">
+              <input type="text" placeholder="ID">
             </div>
             <div class="input-group">
               <i class='bx bxs-lock-alt'></i>
               <input type="password" placeholder="Password">
             </div>
-            <button onclick="location.href='/dashboard'"> Sign in </button>
+            <button onclick="location.href='/dashboard'"> Login </button>
             <p>
               <b>
-                Forgot password?
+                비밀번호 찾기
               </b>
             </p>
             <p>
               <span>
-                Don't have an account?
+                아직 회원이 아니세요?
               </span>
               <b onclick="toggle()" class="pointer">
-                Sign up here
+                회원가입
               </b>
             </p>
           </div>
@@ -84,7 +88,11 @@
       <!-- SIGN IN CONTENT -->
       <div class="col align-items-center flex-col">
         <div class="text sign-in">
-            <img src="/static/images/logo2.PNG"></img>
+          <!-- motion으로 회원가입 누르면 사라지게끔-->
+          <h2>
+            <img src="/static/images/koscom_logo.PNG" style="width:300px; height:300px;">
+          </h2>
+          
         </div>
         <div class="img sign-in">
     
@@ -98,7 +106,7 @@
         </div>
         <div class="text sign-up">
           <h2>
-            Join with us
+            회원가입을<br> 축하합니다!!
           </h2>
   
         </div>
@@ -455,11 +463,13 @@
   </style>
 </head>
 
+<!-- sign-in : 로그인 / sign-up : 회원가입 -->
 <body>
   <div class="container">
   </div>
   <script>
     let container = document.getElementById('container')
+
 
     toggle = () => {
       container.classList.toggle('sign-in')
@@ -473,3 +483,5 @@
 </body>
 
 </html>
+
+<!-- sign-in 가 있으면 ClassList에서 만들고, 없으면 만들어줌 -->
