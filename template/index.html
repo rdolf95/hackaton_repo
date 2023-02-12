@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Dashboard Template · Bootstrap v5.2</title>
+    <title>Option Check</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
 
@@ -34,7 +34,7 @@
       .b-example-divider {
         height: 3rem;
         background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
+        border: solid rgba(236, 109, 30, .15);
         border-width: 1px 0;
         box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
       }
@@ -75,40 +75,41 @@
   </head>
   <body>
     
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" >
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/dashboard"><img src="/static/images/hedge.PNG" class="img-thumbnail" style="width:6rem;"/></a>
+<header class="navbar bg-body-trtiary sticky-top flex-md-nowrap p-0 shadow" style="background-color: rgb(236,109,30);" >
+  <a class="navbar col-md-3 col-lg-2 me-0 px-3 fs-6" href="/dashboard"><img src="/static/images/hedge.PNG" class="img-thumbnail" style="width:6rem;"/></a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
-    </div>
-  </div>
+
 </header>
 
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="margin-top: 2em;">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="margin-top: 2em;">
       <div class="position-sticky pt-3 sidebar-sticky">
-        <ul class="nav flex-column">
+        <ul class="nav flex-column ">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/dashboard">
+            <a class="nav-link active" aria-current="page" href="/dashboard" style="color: rgb(236,109,30);">
               <span data-feather="home" class="align-text-bottom"></span>
               홈
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" aria-current="page" href="/strategy">
               <span data-feather="file" class="align-text-bottom"></span>
-              거래내역
+              옵션 포트폴리오 구성하기
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/strategy">
+              <span data-feather="dollar-sign" class="align-text-bottom"></span>
+              Top수익 포트폴리오 보기
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="shopping-cart" class="align-text-bottom"></span>
-              포트폴리오
+              거래내역
             </a>
           </li>
         </ul>
@@ -127,7 +128,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/">
               <span data-feather="file-text" class="align-text-bottom"></span>
               로그아웃
             </a>
@@ -157,6 +158,8 @@
                 value.push(data[i][1])
               }
               // console.log(date)
+
+
               new Chart(document.getElementById("myChartTest"), {
                 type: 'line',
                 data: {
@@ -164,9 +167,9 @@
                     datasets: [
                       {
                           data: value,
-                          lineTension: 0,
-                          backgroundColor: 'transparent',
-                          borderColor: '#007bff',
+                          lineTension: 0.4,
+                          backgroundColor: 'rgba(236,109,30,0.2)',
+                          borderColor: '#EC6D1E',
                           borderWidth: 4,
                           pointBackgroundColor: '#007bff'
                       }
@@ -184,6 +187,8 @@
           }
           </script>
         </div>
+
+
         <div style="float:left; width:66%; height:70;">
           <canvas id="myChartTest2" width="100" height="35"></canvas>
           <script>
@@ -206,9 +211,10 @@
                     datasets: [
                       {
                           data: value,
-                          lineTension: 0,
-                          backgroundColor: 'transparent',
-                          borderColor: '#007bff',
+                          lineTension: 0.4,
+                          fill: true,
+                          backgroundColor: 'rgba(236,109,30,0.2)',
+                          borderColor: '#EC6D1E',
                           borderWidth: 4,
                           pointBackgroundColor: '#007bff'
                       }
@@ -225,15 +231,12 @@
               });
           }
           </script>
+          <br><br><br>
         </div>
-      <!-- <div>
-        <button><a href="/strategy">TEST</a></button>
-      </div> -->
-      
-      <div style="padding-top: 40em; padding-bottom: 5em;">
-        <button type="button" class="btn btn-outline-primary" style="padding: 2em"><a href="/strategy" style="text-decoration: none;"><h5>다양한 전략을 배워보세요.</h3></a></button>
-      </div>
-      <h2 >My 포트폴리오 현황</h2>
+
+    
+
+      <h2>My 포트폴리오 현황</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm " id="userList">
           <thead>
@@ -244,7 +247,7 @@
               <th scope="col">매입가</th>
               <th scope="col">현재가</th>
               <th scope="col">수익률</th>
-              <th scope="col">Data Analysis</th>
+              <th scope="col">종목 분석자료</th>
             </tr>
           </thead>
           <tbody>
@@ -254,7 +257,7 @@
           fillTable()
           
           async function fillTable(){
-            const BASEURL = 'http://3.38.251.51:8080/'
+            const BASEURL = 'http://127.0.0.1:8080/'
             const response = await fetch(BASEURL+'get_port_profit');
             const data = await response.json();
             let cnt = 1;
@@ -268,7 +271,7 @@
                 "<td>" + data[key].cur_price + "</td>" +
                 "<td>" + Number(data[key].profit).toFixed(2) + "%"+ "</td>" +
                 '<td>\
-                  <button type="button" class="btn btn-outline-primary" type="button" onclick=getUserName('+cnt+')>...</button>\
+                  <button type="button" class="btn btn-outline-secondary" type="button" onclick=getUserName('+cnt+')> 분석정보 보기 </button>\
                 </td>'
                 "</tr>"
               cnt++;
@@ -284,7 +287,7 @@
   <script>
     function getUserName(num) {
       let userList = document.getElementById('userList');
-      const BASEURL = 'http://3.38.251.51:8080/';
+      const BASEURL = 'http://127.0.0.1:8080/';
       const corp_name = userList.rows[num].cells[0].innerText;
       const stock_code = userList.rows[num].cells[1].innerText;
       location.href = BASEURL+'form_submit_get?hidden_corp_name='+corp_name+'&hidden_stock_code='+stock_code+'.KS';

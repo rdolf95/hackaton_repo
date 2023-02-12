@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>주식 분석! </title>
+    <title>OptionCheck 주식 분석</title>
 
     <!-- Bootstrap -->
     <link href="/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,8 +35,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <style>
   .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #26B99A; /* Blue */
+  border: 16px solid #FF9966; 
+  border-top: 16px solid #EC6D1E; 
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -48,7 +48,7 @@
   100% { transform: rotate(360deg); }
 }
 
-  .lightgreen{color:#26B99A;}
+  .lightgreen{color:#EC6D1E;}
 
   .loading span {
   display: inline-block;
@@ -109,10 +109,6 @@
           <input type="hidden" id="hidden_corp_name" name="hidden_corp_name" value=""></input>
           <input type="hidden" id="hidden_stock_code" name="hidden_stock_code" value="">
 
-              <div class="input-group" style="width:93%;margin-bottom: 10px;margin-top: 15px;">
-              <input id="search_input" name="search_input" autocomplete="off" type="text" class="form-control" placeholder="검색어 입력 후 Enter" style="width:100%;height:30px;z-index:4;">
-                <div id="resdiv" style="position: Absolute;z-index:3;background-color:#E6E9ED;width:100%;margin-top:30px;"></div>
-              </div>
 
       </form>
           </div>
@@ -123,7 +119,7 @@
 
         <div id=searchman class="right_col" role="main" style="margin-left:0px">
           <!-- top tiles -->
-<!--            kms re 아이콘 변경 start-->
+<!--            re 아이콘 변경 start-->
           <div class="row tile_count" style="z-index:1;margin-top:60px;">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-thumbs-o-up"></i><font size="3"> {{hidden_corp_name|safe}}</font></span>
@@ -132,7 +128,7 @@
               <span class="count_bottom"><i class="{{res_obj['ent_dict']['color']}}"><i class="{{res_obj['ent_dict']['rate']}}"></i>{{ "%.2f"|format((res_obj['ent_dict']['today'] - res_obj['ent_dict']['eve'])/res_obj['ent_dict']['eve']*100)}}&#37;
               </i>{{res_obj['ent_dict']['eve']}}</span>
             </div>
-<!--              kms re end-->
+<!--              re end-->
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-line-chart"></i><font size="3"> KOSPI</font></span>
               <div class="count">{{f_info['^KS11'][1]}}</div>
@@ -164,7 +160,7 @@
               </i> &nbsp;{{f_info['^DJI'][0]}}</span>
             </div>
           </div>
-            <!--kms re 아이콘 변경부분 end-->
+            <!-- re 아이콘 변경부분 end-->
           <!-- /top tiles -->
 
           <div class="row">
@@ -172,13 +168,13 @@
               <div class="dashboard_graph">
 
                 <div class="row x_title">
-                  <div id = 'ent_code' name = 'ent_code' class="col-md-6">
+                  <div id = 'ent_code' name = 'ent_code' class="col-md-6" style="background: #fff;">
                       <b><font size="5">{{hidden_corp_name | safe}} 주가 차트</font></b>
                   </div>
                   <div class="col-md-6">
                     <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
                       <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                      <span>20230212 3조</span> <b class="caret"></b>
                     </div>
                   </div>
                 </div>
@@ -186,7 +182,7 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
 <!--차트부분!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
                 <div name="kms_chart_div" id = "kms_chart_div" style="margin-top:1%;">
-                  <canvas name='kms_chart' id="kms_chart" width="350" height="100"></canvas>
+                  <canvas name='kms_chart' id="kms_chart" width="350" height="100" style ="color: #EC6D1E;"></canvas>
                 </div>
                     </div>
                   <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
@@ -197,7 +193,6 @@
 
                   <div class="col-md-12 col-sm-12 col-xs-6">
                       <table border=0 bordercolor=#FFFFFF height="150" width="100%" >
-
                             <tbody>
                               <tr>
                                   <td align="left"><font size="4">{{hidden_corp_name|safe}}</font></td>
@@ -240,7 +235,7 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_390 overflow_hidden">
                <div class="x_title">
-                  <h2><b>유사 업종 비교</b>  </h2> <!--TODO 이름 혜린-->
+                  <h2><b>유사 업종 비교</b>  </h2> 
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -265,70 +260,15 @@
                       <canvas id="MyRadar" class="CanvasRadar"height="45%" width="80%" style="margin-top: 3%;"></canvas>
                     </tr>
                   </table>
-<!--             RADAR CHART 넣는 곳     -->
 
 
-<!--                  <table class="" style="width:40%">-->
-<!--                    <tr>-->
-<!--                      <th style="width:37%;">-->
-<!--                        <p>산업별 주식 비교</p>-->
-<!--                      </th>-->
-<!--                      <th>-->
-<!--                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">-->
-<!--                          <p class="">Device</p>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
-<!--                          <p class="">Progress</p>-->
-<!--                        </div>-->
-<!--                      </th>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td>            &lt;!&ndash;canvas class, id 변경하기!!!!&ndash;&gt;-->
-<!--                        <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>-->
-<!--                      </td>-->
-<!--                      <td>-->
-<!--                        <table class="tile_info">-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square blue"></i>IOS </p>-->
-<!--                            </td>-->
-<!--                            <td>30%</td>-->
-<!--                          </tr>-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square green"></i>Android </p>-->
-<!--                            </td>-->
-<!--                            <td>200%</td>-->
-<!--                          </tr>-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square purple"></i>Blackberry </p>-->
-<!--                            </td>-->
-<!--                            <td>20%</td>-->
-<!--                          </tr>-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square aero"></i>Symbian </p>-->
-<!--                            </td>-->
-<!--                            <td>15%</td>-->
-<!--                          </tr>-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square red"></i>Others </p>-->
-<!--                            </td>-->
-<!--                            <td>30%</td>-->
-<!--                          </tr>-->
-<!--                        </table>-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                  </table>-->
                 </div>
               </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_390 overflow_hidden">
                 <div class="x_title">
-                  <h2><b> 매출, 당기순이익 추이 </b></h2> <!--TODO 이름 혜린-->
+                  <h2><b> 매출, 당기순이익 추이 </b></h2> 
                   <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -353,60 +293,7 @@
                       <canvas id="MyBar" class="CanvasBar"height="40%" width="80%" style="margin: 10px 5px 5px 0"></canvas>
                     </tr>
                   </table>
-<!--                  <table class="" style="width:40%">-->
-<!--                    <tr>-->
-<!--                      <th style="width:37%;">-->
-<!--                        <p>산업별 주식 비교</p>-->
-<!--                      </th>-->
-<!--                      <th>-->
-<!--                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">-->
-<!--                          <p class="">Device</p>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">-->
-<!--                          <p class="">Progress</p>-->
-<!--                        </div>-->
-<!--                      </th>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td>            &lt;!&ndash;canvas class, id 변경하기!!!!&ndash;&gt;-->
-<!--                        <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>-->
-<!--                      </td>-->
-<!--                      <td>-->
-<!--                        <table class="tile_info">-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square blue"></i>IOS </p>-->
-<!--                            </td>-->
-<!--                            <td>30%</td>-->
-<!--                          </tr>-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square green"></i>Android </p>-->
-<!--                            </td>-->
-<!--                            <td>200%</td>-->
-<!--                          </tr>-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square purple"></i>Blackberry </p>-->
-<!--                            </td>-->
-<!--                            <td>20%</td>-->
-<!--                          </tr>-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square aero"></i>Symbian </p>-->
-<!--                            </td>-->
-<!--                            <td>15%</td>-->
-<!--                          </tr>-->
-<!--                          <tr>-->
-<!--                            <td>-->
-<!--                              <p><i class="fa fa-square red"></i>Others </p>-->
-<!--                            </td>-->
-<!--                            <td>30%</td>-->
-<!--                          </tr>-->
-<!--                        </table>-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                  </table>-->
+
                 </div>
               </div>
             </div>
@@ -657,7 +544,7 @@
           <!-- footer content -->
         <footer style="margin-left:0px">
           <div class="pull-right" >
-            개발자 : 김문식 이혜린 최상현 황지현
+            개발자 : 김민재 김준영 김형순 김호연 박윤진
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -751,7 +638,8 @@
       datasets: [
       {
         data: ent_close,      //------------------------- y축 데이터1 예:국어성적
-        borderColor: '#1ABB9C',
+        borderColor: '#EC6D1E',
+        backgroundColor: 'rgba(236,109,30,0.2)',
         fill: true,
         tension: 0.4
     }]};
@@ -774,12 +662,12 @@
     scales: {
             xAxes: [{
                 gridLines: {
-                color: "rgba(0, 0, 0, 0)",
+                color: "rgba(236,109,30,0.2)",
                              }
                                         }],
             yAxes: [{
                 gridLines: {
-                color: "rgba(0, 0, 0, 0)",
+                color: "rgba(236,109,30,0.2)",
                              }}],
 
         x: {                    //--------------------x축 눈금 관련
@@ -808,40 +696,43 @@
 
     </script>
   <script>
-      // Radar chart 혜린
+      // Radar chart 
       // for문 돌려서 개수 선택할 수 있으면 좋을듯
         var ctx = document.getElementById("MyRadar");
         var data = {
           labels: {{RD_LABEL_LIST | safe}},
-          datasets: [{
+          datasets: [
+            {
             label: Object.keys({{RD_DATA_DICT[0] | safe}}), //TODO 이름
-            backgroundColor: "rgba(3, 88, 106, 0.2)",
-            borderColor: "rgba(3, 88, 106, 0.80)",
-            pointBorderColor: "rgba(3, 88, 106, 0.80)",
-            pointBackgroundColor: "rgba(3, 88, 106, 0.80)",
+            backgroundColor: "rgba(236,109,30,0.8)",
+            borderColor: "rgba(236,109,30,0.8)",
+            pointBorderColor: "rgba(236,109,30,0.8)",
+            pointBackgroundColor: "rgba(236,109,30,0.8)",
             pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderColor: "rgba(236,109,30,1)",
             data: {{RD_DATA_DICT[0] | safe}}[Object.keys({{RD_DATA_DICT[0] | safe}})]
-          }, {
+          }, 
+          {
             label: Object.keys({{RD_DATA_DICT[1] | safe}}),
-            backgroundColor: "rgba(38, 185, 154, 0.2)",
-            borderColor: "rgba(38, 185, 154, 0.85)",
-            pointColor: "rgba(38, 185, 154, 0.85)",
+            backgroundColor: "rgba(255, 204, 153, 0.8)",
+            borderColor: "rgba(255, 204, 153, 0.8)",
+            pointColor: "rgba(255, 204, 153, 0.8)",
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
+            pointHighlightStroke: "rgba(255, 204, 153, 1)",
             data: {{RD_DATA_DICT[1] | safe}}[Object.keys({{RD_DATA_DICT[1] | safe}})]
           },
           {
             label: Object.keys({{RD_DATA_DICT[2] | safe}}),
-            backgroundColor: "rgba(38, 185, 154, 0.2)",
-            borderColor: "rgba(0, 184, 95, 0.85)",
-            pointColor: "rgba(0, 184, 95, 0.85)",
+            backgroundColor: "rgba(102, 000, 255, 0.8)",
+            borderColor: "rgba(102, 000, 255, 0.8)",
+            pointColor: "rgba(102, 000, 255, 0.8)",
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
+            pointHighlightStroke: "rgba(102, 000, 255, 1)",
             data: {{RD_DATA_DICT[2] | safe}}[Object.keys({{RD_DATA_DICT[2] | safe}})]
-          }]
+          }
+        ]
         };
 
         var canvasRadar = new Chart(ctx, {
@@ -863,7 +754,7 @@
     }else if (codes>40 && codes<=60){
       twocolor='#66b828'
     }else if (codes>60 && codes<=80){
-      twocolor='#fe8917'
+      twocolor='#EC6D1E'
     }else{
      twocolor='red'
     }
@@ -874,7 +765,7 @@
 		  pointer: {
 			  length: 0.75,
 			  strokeWidth: 0.042,
-			  color: '#1D212A'
+			  color: '#FF9966'
 		  },
 		  limitMax: 'false',
 		  colorStart: twocolor,
@@ -902,7 +793,7 @@
 		}
     </script>
   <script>
-      // Radar chart 혜린
+      // Radar chart
         var ctx = document.getElementById("MyBar");
           var mybarChart = new Chart(ctx, {
             type: 'bar',
@@ -910,11 +801,11 @@
               labels: {{BAR_LABEL_LIST | safe}},
               datasets: [{
                 label: '매출액',
-                backgroundColor: "#26B99A",
+                backgroundColor: "#EC6D1E",
                 data: {{BAR_DATA_LIST_MCH | safe}}
               }, {
                 label: '당기순이익',
-                backgroundColor: "#03586A",
+                backgroundColor: "#FF9966",
                 data: {{BAR_DATA_LIST_DG | safe}}
               }]
             },
@@ -958,13 +849,13 @@
                         flask_return_list  = JSON.parse(flask_return_str)  //jquery
                         console.log(flask_return_list);
 
-                        html_str = "<table border=1  bordercolor=#E6E9ED>"
+                        html_str = "<table border=1  bordercolor=#FF9966>"
                         //-------------------------------------------------
                         $.each(flask_return_list, function( i, v ) {
                             //i 0   v ['smith', 1400]
                             //i 1   v ['allen', 4000]
                             console.log( v[0] , v[1]);
-                            html_str += "<tr><td><button style='background-color: #E6E9ED;border:0; outline:0;' class='ajax_com_name_btn' value="+v[0]+" id="+i+"_name >"+v[1]+"</button></td></tr>"    //script
+                            html_str += "<tr><td><button style='background-color: #FF9966;border:0; outline:0;' class='ajax_com_name_btn' value="+v[0]+" id="+i+"_name >"+v[1]+"</button></td></tr>"    //script
                         });
                         html_str += "</table>"
                         $( "#resdiv" ).empty();
@@ -1010,13 +901,13 @@
                         flask_return_list  = JSON.parse(flask_return_str)  //jquery
                         console.log(flask_return_list);
 
-                        html_str = "<table border=1  bordercolor=#E6E9ED>"
+                        html_str = "<table border=1  bordercolor=#FF9966>"
                         //-------------------------------------------------
                         $.each(flask_return_list, function( i, v ) {
                             //i 0   v ['smith', 1400]
                             //i 1   v ['allen', 4000]
                             console.log( v[0] , v[1]);
-                            html_str += "<tr><td><button style='background-color: #E6E9ED;border:0; outline:0;' class='ajax_com_name_btn' value="+v[0]+" id="+i+"_name >"+v[1]+"</button></td></tr>"    //script
+                            html_str += "<tr><td><button style='background-color: #FF9966;border:0; outline:0;' class='ajax_com_name_btn' value="+v[0]+" id="+i+"_name >"+v[1]+"</button></td></tr>"    //script
                         });
                         html_str += "</table>"
                         $( "#resdiv" ).empty();
@@ -1033,7 +924,7 @@
 </script>
           <script src="skycons.js"></script>
     <script>
-    var skycons = new Skycons({"color": "#42C1A7"});
+    var skycons = new Skycons({"color": "#EC6D1E"});
 
     skycons.add("icon0", Skycons.{{ICONS[0] | safe}});
     skycons.add("icon1", Skycons.{{ICONS[1] | safe}});

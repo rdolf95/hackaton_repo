@@ -48,7 +48,7 @@ com_df=pd.read_csv('com_df.csv',
 
 
 # ====================================================
-#                자동완성 비동기 by 최상현
+#                자동완성 비동기
 # ====================================================
 #---------------- 업체이름을 타이핑할때마다 실시간 비동기로 업체 명단을 가져와서 리턴 -----------
 @app.route('/com_search_ajax', methods=['post'])
@@ -85,7 +85,7 @@ def form_submit_get():
 
 
 
-    # ----------------재무 정보 시각화 관련 함수------------------ by 이혜린
+    # ----------------재무 정보 시각화 관련 함수------------------
     radar_label, radar_dict, weather_list, foreign, giguan = relate_radar_weather_data(stock_code=stock_code)
     bar_label, bar_mch_list, bar_dg_list = mch_dg(stock_code=stock_code)
     icons = icon_selection(weather_list)
@@ -101,14 +101,14 @@ def form_submit_get():
 
 
 
-    # ----------------뉴스 기사 크롤링 관련 함수------------------ by 황지현
+    # ----------------뉴스 기사 크롤링 관련 함수-----------------
     df = news_crawl(origin_code) #우선주말고 보통주로 검색
     json_str = df.to_json(orient="values")
     json_obj = json.loads(json_str)
     code = invest_opinion(origin_code)  # 우선주말고 보통주로 검색
 
 
-    #-------------------ARIMA 관련 함수------------------------ by 황지현
+    #-------------------ARIMA 관련 함수-----------------------
     low_stock, low_mae = stock_predict(stock_code, '저가')
     high_stock, high_mae = stock_predict(stock_code, '고가')
     close_stock, close_mae = stock_predict(stock_code, '종가')
@@ -121,12 +121,12 @@ def form_submit_get():
         high_stock = close_stock
 
 
-    # -----------------재무제표 크롤링 관련함수------------------- by 최상현
+    # -----------------재무제표 크롤링 관련함수------------------
     ifrs=crawl_ifrs(origin_code) #우선주말고 보통주로 검색
 
 
 
-    # -----------------경제지수, 기업 주가 관련함수--------------- by 김문식
+    # -----------------경제지수, 기업 주가 관련함수--------------
     chart_res = chart_data(hidden_stock_code)
     f_info = finance_data(hidden_stock_code)
 
@@ -227,7 +227,7 @@ def finance_data(stock_code):
 ######
 
 # ====================================================
-#                    메인 페이지 by 최상현
+#                    메인 페이지
 # ====================================================
 
 
