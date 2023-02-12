@@ -280,6 +280,10 @@ def get_kospi_graph_data():
 @app.route('/get_port_profit')
 def get_port_profit():
     return json.loads(port_data.get_port_profit())
+
+@app.route('/toplist')
+def showtoplist():
+    return render_template("toplist.html")
     
 if __name__ == '__main__':
     app.debug = True
