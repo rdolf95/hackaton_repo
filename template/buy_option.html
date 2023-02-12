@@ -77,78 +77,72 @@
     </style>
 
     
-    <!-- Custom styles for this template -->
-    <link href="/static/css/buy_option.css" rel="stylesheet">
-  </head>
-  <body>
-    
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <!--<span class="navbar-toggler-icon"></span>-->
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/dashboard">
-    <div style="font-size: 8px;">
-      <i class="fas fa-smile fa-5x"></i>
-    </div>
-  </a>
-
+ <!-- Custom styles for this template -->
+ <link href="/static/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
   
-  <!--<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>-->
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
-    </div>
-  </div>
+<header class="navbar bg-body-trtiary sticky-top flex-md-nowrap p-0 shadow" style="background-color: rgb(236,109,30);" >
+<a class="navbar col-md-3 col-lg-2 me-0 px-3 fs-6" href="/dashboard"><img src="/static/images/hedge.PNG" class="img-thumbnail" style="width:6rem;"/></a>
+<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
 </header>
 
 <div class="container-fluid">
-  <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="position-sticky pt-3 sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
-              <span data-feather="home" class="align-text-bottom"></span>
-              주문 체결
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file" class="align-text-bottom"></span>
-              Orders
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart" class="align-text-bottom"></span>
-              Products
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users" class="align-text-bottom"></span>
-              Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers" class="align-text-bottom"></span>
-              Integrations
-            </a>
-          </li>
-        </ul>
+<div class="row">
+  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="margin-top: 2em;">
+    <div class="position-sticky pt-3 sidebar-sticky">
+      <ul class="nav flex-column ">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/dashboard" style="color: rgb(236,109,30);">
+            <span data-feather="home" class="align-text-bottom"></span>
+            홈
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/strategy">
+            <span data-feather="file" class="align-text-bottom"></span>
+            옵션 포트폴리오 구성하기
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/strategy">
+            <span data-feather="dollar-sign" class="align-text-bottom"></span>
+            Top수익 포트폴리오 보기
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span data-feather="shopping-cart" class="align-text-bottom"></span>
+            거래내역
+          </a>
+        </li>
+      </ul>
 
-
-      </div>
-    </nav>
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+        <span>Saved reports</span>
+        <a class="link-secondary" href="#" aria-label="Add a new report">
+          <span data-feather="plus-circle" class="align-text-bottom"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            도움말
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            로그아웃
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="order-div">
@@ -166,7 +160,7 @@
               <option value="">
                 Year
               </option>
-              <option value="2023">
+              <option value="2023" selected>
                 2023
               </option>
               <option value="2024">
@@ -216,7 +210,7 @@
         <div style="float:left; width:33%; height:60;" >
           <canvas id="profit_graph" width="550px" height="350px" ></canvas>
           <script>
-            draw_profit_graph(true);
+            //draw_profit_graph(true);
             
           </script>
         </div>
@@ -239,6 +233,31 @@
                       console.log(flask_return_str);
                       $('#premium').val(JSON.parse(flask_return_str))
                       //$("#profit_graph").find('option').remove()
+                      draw_profit_graph(false);
+                 },
+                error: function(res){  } ,
+                crossDomain: true
+            });
+  });
+
+  $(document).ready(function() {
+    $("#maturity_month").find('option').remove()
+    add_month_option($("#maturity_year").val())
+    $('#maturity_month').val(5).prop('selected', 'true');
+    $("#strike_price").find('option').remove()
+    default_strike_price()
+    add_strike_price_option()
+
+    var cur_strike = 340.0
+    $("#strike_price").val(cur_strike).prop("selected", true);
+
+    $.ajax({  url: "/get_premium" ,
+                type : "post",
+                data: {"strike_price" : $("#strike_price").val(),
+                       "maturity_month" : $("#maturity_month").val() } ,
+                success: function(flask_return_str) {
+                      console.log(flask_return_str);
+                      $('#premium').val(JSON.parse(flask_return_str))
                       draw_profit_graph(false);
                  },
                 error: function(res){  } ,
