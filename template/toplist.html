@@ -1,5 +1,174 @@
 <!doctype html>
 <html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=" utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.104.2">
+  <title>Option Check</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!--    google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <style>
+
+
+    .responsive-table {
+      width: 100%;
+      margin-bottom: 1.5em;
+    }
+
+    .responsive-table thead {
+      position: absolute;
+      clip: rect(1px 1px 1px 1px);
+      /* IE6, IE7 */
+      clip: rect(1px, 1px, 1px, 1px);
+      padding: 0;
+      border: 0;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+    }
+
+    .responsive-table thead th {
+      background-color: #ec6d1e;
+      border: 1px solid #ec6d1e;
+      font-weight: normal;
+      text-align: center;
+      color: white;
+    }
+
+    .responsive-table thead th:first-of-type {
+      text-align: left;
+    }
+
+    .responsive-table tbody,
+    .responsive-table tr,
+    .responsive-table th,
+    .responsive-table td {
+      display: block;
+      padding: 0;
+      text-align: left;
+      white-space: normal;
+    }
+
+    .responsive-table th,
+    .responsive-table td {
+      padding: .5em;
+      vertical-align: middle;
+    }
+
+    .responsive-table caption {
+      margin-bottom: 1em;
+      font-size: 1em;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .responsive-table tfoot {
+      font-size: .8em;
+      font-style: italic;
+    }
+
+    .responsive-table tbody tr {
+      margin-bottom: 1em;
+      border: 2px solid #ec6d1e;
+    }
+
+    .responsive-table tbody tr:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .responsive-table tbody th[scope="row"] {
+      background-color: #ec6d1e;
+      color: white;
+    }
+
+    .responsive-table tbody td[data-type=currency] {
+      text-align: center;
+    }
+
+    .responsive-table tbody td[data-title]:before {
+      content: attr(data-title);
+      float: left;
+      font-size: .8em;
+      color: white;
+    }
+
+    .responsive-table tbody td {
+      text-align: right;
+      border-bottom: 1px solid #ec6d1e;
+    }
+
+
+    @media (min-width: 52em) {
+      .responsive-table {
+        font-size: .9em;
+      }
+
+      .responsive-table thead {
+        position: relative;
+        clip: auto;
+        height: auto;
+        width: auto;
+        overflow: auto;
+      }
+
+      .responsive-table tr {
+        display: table-row;
+      }
+
+      .responsive-table th,
+      .responsive-table td {
+        display: table-cell;
+        padding: .5em;
+      }
+
+      .responsive-table caption {
+        font-size: 1.5em;
+      }
+
+      .responsive-table tbody {
+        display: table-row-group;
+      }
+
+      .responsive-table tbody tr {
+        display: table-row;
+        border-width: 1px;
+      }
+
+      .responsive-table tbody tr:nth-of-type(even) {
+        background-color: rgba(94, 93, 82, 0.1);
+      }
+
+      .responsive-table tbody th[scope="row"] {
+        background-color: white;
+        color: #5e5d52;
+        text-align: center;
+      }
+
+      .responsive-table tbody td {
+        text-align: center;
+      }
+
+      .responsive-table tbody td[data-title]:before {
+        content: none;
+      }
+    }
+
+    body, h1, h2, h3, h4, h5, h6, p, span {
+    font-family: 'Noto Sans KR', sans-serif !important;
+  }
+  </style>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +244,7 @@
         -webkit-overflow-scrolling: touch;
       }
 
-      body, h1, h2, h3, h4, h5, h6, p, span {
+      body, h1, h2, h3, h4, h5, h6, p, span, ul, li, nav {
     font-family: 'Noto Sans KR', sans-serif !important;
   }
     </style>
@@ -148,137 +317,155 @@
           </div>
         </nav>
 
+
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">     
         <br>
         <h2 >Today's Toplist</h2>
-        <div class="table table-striped table-sm">
-            <table>
-                <thead>
-                  <tr>
-                    <th>순위</th>
-                    <th>ID</th>
-                    <th>수익률</th>
-                    <th>포트폴리오 바로가기</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>김준영</td>
-                    <td>135.2%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>김민재</td>
-                    <td>85.3%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/toplist/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>박윤진</td>
-                    <td>78.2%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/toplist/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>김호연</td>
-                    <td>12.2%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/toplist/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>김형순</td>
-                    <td>5.0%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/toplist/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>채승훈</td>
-                    <td>7%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/toplist/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>채효신</td>
-                    <td>2%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/toplist/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  <tr>
-                    <td>8</td>
-                    <td>김재현</td>
-                    <td>1.23%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/toplist/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>백민주</td>
-                    <td>0.2%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/toplist/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>장승민</td>
-                    <td>-1.2%</td>
-                    <td> <button type="button" class="btn btn-outline-secondary" type="button" onclick= "location.href = '/toplist/dashboard'"> 포트폴리오 바로가기 </button></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-          
-        </div>
+        <h2 style = " font-size:1em;"> ▶ 포트폴리오 바로가기를 클릭하시면 해당 유저의 포트폴리오로 이동하실 수 있습니다.</h2>
+        <br>
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th scope="col">순위</th>
+              <th scope="col">ID</th>
+              <th scope="col">수익률</th>
+              <th scope="col">포트폴리오 바로가기</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="7">Sources: <a rel="external">오늘의 Top 10인 </a>. Data is current as of February 14, 2023</td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td data-title="Released">김준영</td>
+              <td data-title="Studio">135.2%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/dashboard"> 6-5</a> </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td data-title="Released">김민재</td>
+              <td data-title="Studio">85.3%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/toplist/dashboard">6-9</a></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td data-title="Released">박윤진</td>
+              <td data-title="Studio">78.2%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/dashboard">6-7</a></td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td data-title="Released">김호연</td>
+              <td data-title="Studio">12.2%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/dashboard">6-9</a></td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td data-title="Released">김형순</td>
+              <td data-title="Studio">70%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/dashboard">6-9</a></td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td data-title="Released">채효신</td>
+              <td data-title="Studio">5.0%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/dashboard">6-7</a></td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td data-title="Released">채승훈</td>
+              <td data-title="Studio">2%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/dashboard">6-4</a></td>
+            </tr>
+            <tr>
+              <th scope="row">8</th>
+              <td data-title="Released">장승민</td>
+              <td data-title="Studio">1.23%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/dashboard">6-10</a></td>
+            </tr>
+            <tr>
+              <th scope="row">9</th>
+              <td data-title="Released">이상민</td>
+              <td data-title="Studio">0.2%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/dashboard">6-11</a></td>
+            </tr>
+            <tr>
+              <th scope="row">10</th>
+              <td data-title="Released">백민주</td>
+              <td data-title="Studio">-1.2%</td>
+              <td data-title="Worldwide Gross" data-type="currency"><a href="/dashboard">6-10</a></td>
+            </tr>
+          </tbody>
+        </table>
+  
+
+        
       </main>
+
     </div>
   </div>
+  <div>
+    <style>
+      body {
+        color: #666;
+        font: 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
+      }
 
-          <style>
-            body {
-                color: #666;
-                font: 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
-              }
-              table {
-                border-collapse: separate;
-                border-spacing: 0;
-                width: 100%;
-              }
-              th,
-              td {
-                padding: 6px 15px;
-              }
-              th {
-                background: #42444e;
-                color: #fff;
-                text-align: left;
-              }
-              tr:first-child th:first-child {
-                border-top-left-radius: 6px;
-              }
-              tr:first-child th:last-child {
-                border-top-right-radius: 6px;
-              }
-              td {
-                border-right: 1px solid #c6c9cc;
-                border-bottom: 1px solid #c6c9cc;
-              }
-              td:first-child {
-                border-left: 1px solid #c6c9cc;
-              }
-              tr:nth-child(even) td {
-                background: #eaeaed;
-              }
-              tr:last-child td:first-child {
-                border-bottom-left-radius: 6px;
-              }
-              tr:last-child td:last-child {
-                border-bottom-right-radius: 6px;
-              }
-          </style>
+      table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+      }
 
-      </div>
+      th,
+      td {
+        padding: 6px 15px;
+      }
+
+      th {
+        background: #42444e;
+        color: #ffffff;
+        text-align: left;
+      }
+
+      tr:first-child th:first-child {
+        border-top-left-radius: 6px;
+      }
+
+      tr:first-child th:last-child {
+        border-top-right-radius: 6px;
+      }
+
+      td {
+        border-right: 1px solid #f6f7f8;
+        border-bottom: 1px solid #c6c9cc;
+      }
+
+      td:first-child {
+        border-left: 1px solid #c6c9cc;
+      }
+
+      tr:nth-child(even) td {
+        background: #FF9966;
+      }
+
+      tr:last-child td:first-child {
+        border-bottom-left-radius: 6px;
+      }
+
+      tr:last-child td:last-child {
+        border-bottom-right-radius: 6px;
+      }
+    </style>
+
+  </div>
 
 
-      
-      
+
+
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
