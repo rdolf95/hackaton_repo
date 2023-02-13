@@ -242,6 +242,6 @@ def option_crawl (option_type: str= '2', mat_yr: str= '2023',
     option_df = option_df.drop(['index', '대비', '시가', '고가', '저가', '내재변동성', '익일기준가', '거래량', '거래대금', '미결제약정'], axis=1)
     option_df.columns = ['Date', 'Close']
 
-    return option_df.loc[0]
+    return option_df.loc[0  ]
 
 #print('전일 종가: ', df.loc[0]['종가'])
