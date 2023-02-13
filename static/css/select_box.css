@@ -8,6 +8,7 @@
   border: 1px solid #f3f3f39d;
   background-color: #eeeeee;
   z-index: 1;
+  float: left;
 }
 .custom-select select {
   border: none;
@@ -30,9 +31,9 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 50px;
+  width: 25px;
   height: 100%;
-  line-height: 38px;
+  line-height: 30px;
   content: "∨";
   text-align: center;
   color: #714BB9;
@@ -46,13 +47,13 @@
   display: block;
   max-width: 100px;
   max-height: 40px;
-  min-width: 80px;
+  min-width: 90px;
   margin: 0 auto;
   border: 1px solid #f3f3f39d;
   background-color: #eeeeee;
   z-index: 1;
   float: left;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 .year-select select {
   border: none;
@@ -141,6 +142,7 @@
   border: 1px solid #f3f3f39d;
   background-color: #eeeeee;
   z-index: 1;
+  float: left;
 }
 
 .custom-input input {
@@ -154,17 +156,27 @@
   margin: 0;
   display: block;
   width: 100%;
-  padding: 12px 5px 15px 15px;
+  padding: 10px 5px 15px 10px;
   font-size: 14px;
   color: #714BB9;
+  text-align: center;
+}
+
+.btn-custom {
+  min-height: 0px;
+  min-width: 0px;
+  vertical-align: top;
+  float: left;
 }
 
 
 
 .custom-span{
   float: left;
-  width: 80px;
+  min-width: 80px;
+  min-height: 50px;
   font-size: 15pt;
+  padding-top: 3px;
 }
 
 .select-box {
