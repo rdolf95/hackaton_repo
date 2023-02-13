@@ -224,7 +224,7 @@
     <script>
     
     $(document).on('change', '#strike_price', function() {
-      $.ajax({  url: "/get_premium" ,
+      $.ajax({  url: "http://3.38.251.51:8080/get_premium" ,
                 type : "post",
                 data: {"strike_price" : $("#strike_price").val(),
                        "maturity_month" : $("#maturity_month").val() } ,
@@ -254,7 +254,7 @@
     var cur_strike = 340.0
     $("#strike_price").val(cur_strike).prop("selected", true);
 
-    $.ajax({  url: "/get_premium" ,
+    $.ajax({  url: "http://3.38.251.51:8080/get_premium" ,
                 type : "post",
                 data: {"strike_price" : $("#strike_price").val(),
                        "maturity_month" : $("#maturity_month").val() } ,
