@@ -257,6 +257,10 @@ def strategyDown():
 def showtoplist():
     return render_template("toplist.html")
 
+@app.route('/order_res')
+def order_res():
+    return render_template("order_res.html")
+
 @app.route('/toplist/dashboard')
 def topDash():
     return render_template("index.html", param='1', name='김민재')

@@ -191,7 +191,7 @@
           <script>
             getData();
             async function getData() {
-              const BASEURL = 'http://43.200.252.29:8080/'
+              const BASEURL = 'http://3.38.251.51:8080/'
               const response = await fetch(BASEURL+'get_port_graph_data' + '?param=' + {{param}});
               const data = await response.json();
               console.log(data.length)
@@ -247,7 +247,7 @@
           <script>
             getData();
             async function getData() {
-              const BASEURL = 'http://43.200.252.29:8080/'
+              const BASEURL = 'http://3.38.251.51:8080/'
               const response = await fetch(BASEURL+'get_kospi_graph_data'+ '?param=' + {{param}});
               const data = await response.json();
               const date = []
@@ -310,7 +310,7 @@
           fillTable()
           
           async function fillTable(){
-            const BASEURL = 'http://43.200.252.29:8080/'
+            const BASEURL = 'http://3.38.251.51:8080/'
             const response = await fetch(BASEURL+'get_port_profit'+ '?param=' + {{param}});
             const data = await response.json();
             let cnt = 1;
@@ -333,6 +333,33 @@
           
         </script>
       </div>
+      <div class="table-responsive">
+        <h2>My 옵션 현황</h2>
+        <table class="table table-striped table-sm " id="userList">
+            <thead>
+              <tr>
+                <th scope="col">종목명</th>
+                <th scope="col">주식코드</th>
+                <th scope="col">만기</th>
+                <th scope="col">행사가</th>
+                <th scope="col">계약수</th>
+                <th scope="col">프리미엄</th>
+                <th scope="col">계약금액</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="col">KOSPI200 콜 옵션 매도</th>
+                <td scope="col">201T5340</th>
+                <td scope="col">2023/5/11</th>
+                <td scope="col">340</th>
+                <td scope="col">50</th>
+                <td scope="col">3.85</th>
+                <td scope="col">48,125,000</th>
+              </tr>
+            </tbody>
+          </table>
+      </div>
     </main>
   </div>
 </div>
@@ -342,7 +369,7 @@
       document.getElementsByClassName('layerPopup')[0].style.visibility='visible';
 
       let userList = document.getElementById('userList');
-      const BASEURL = 'http://43.200.252.29:8080/';
+      const BASEURL = 'http://3.38.251.51:8080/';
       const corp_name = userList.rows[num].cells[0].innerText;
       const stock_code = userList.rows[num].cells[1].innerText;
       location.href = BASEURL+'form_submit_get?hidden_corp_name='+corp_name+'&hidden_stock_code='+stock_code+'.KS';
