@@ -43,7 +43,7 @@ def get_port_graph_data():
         if datelist[j] != 0:
             result.append((datelist[j].strftime("%Y/%m/%d"), str(difflist[j])))
 
-    print(result)
+    #print(result)
     # difflist : 최근 30일간의 내 portfolio 수익률을 list로 저장 (영업일이 아닌 날은 마지막에 0으로 들어감)
 
     return json.dumps(result) #리스트 형태로 데이터 전송
@@ -62,7 +62,7 @@ def get_etf_graph_data():
     for i in range(len(etfDiff)):
         etfDiffList[i] = str(etfDiff.loc[i][1])
 
-    print(etfDiffList)
+    #print(etfDiffList)
     # etfDiffList : 최근 30일간의 ETF 수익률을 list로 저장 (영업일이 아닌 날은 마지막에 0으로 들어감)
 
     return json.dumps(etfDiffList) #리스트 형태로 데이터 전송
@@ -84,7 +84,7 @@ def get_kospi_graph_data():
     for i in range(len(kospi_diff)):
         kospiDiffList[i] = (str(kospi_diff.loc[i][0].strftime("%Y/%m/%d")), str(kospi_diff.loc[i][1]))
 
-    print(kospiDiffList)
+    #print(kospiDiffList)
     # kospiDiffList : 최근 30일간의 kospi 데이터를 list로 저장 (영업일이 아닌 날은 마지막에 0으로 들어감)
 
     return json.dumps(kospiDiffList) #리스트 형태로 데이터 전송
@@ -127,8 +127,27 @@ def get_port_profit():
 
         json_res[company_name] = stock_dict
 
-    print(json_res) #딕셔너리 형태로 포트폴리오 데이터 전송
+    #print(json_res) #딕셔너리 형태로 포트폴리오 데이터 전송
 
     return json.dumps(json_res, ensure_ascii=False) 
 
-print(get_port_graph_data())
+def get_cur_kospi():
+
+    today = datetime.now()
+    today = today.strftime('%Y%m%d')
+    prev_month = datetime.now() - timedelta(days=30)
+    prev_month = prev_month.strftime('%Y%m%d')
+
+    kospi_diff = get_kospi_price(fromdate= prev_month, todate= today, ticker= "1028")
+    kospiDiffList = [0 for _ in range(30)]
+
+    print(kospi_diff)
+    
+
+    for i in range(len(kospi_diff)):
+        kospiDiffList[i] = (str(kospi_diff.loc[i][0].strftime("%Y/%m/%d")), str(kospi_diff.loc[i][1]))
+
+    #print(kospiDiffList)
+    # kospiDiffList : 최근 30일간의 kospi 데이터를 list로 저장 (영업일이 아닌 날은 마지막에 0으로 들어감)
+
+    return json.dumps(kospiDiffList) #리스트 형태로 데이터 전송

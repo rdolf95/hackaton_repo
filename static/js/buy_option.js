@@ -154,3 +154,148 @@ function add_strike_price_option() {
     strike_price.options.add(objOption);
   }
 }
+
+
+var graph = null;
+
+async function draw_profit_graph(isFirst) {
+  console.log("Draw!!")
+  const BASEURL = 'http://127.0.0.1:8080/'
+  const response = await fetch(BASEURL);
+
+  const cur_kospi = 325.0 
+  strike_price = 0
+  if (isFirst){
+    strike_price = 335.0
+  }
+  else{
+    strike_price = document.getElementById("strike_price").value
+  }
+
+  const premium = parseFloat(document.getElementById("premium").value)
+  const kospi_axis = []
+  const kospi_value = []
+  const cc_value = []
+  console.log("pre", premium)  
+  var price_diff = Math.ceil(strike_price - cur_kospi)
+  console.log(price_diff)
+  const_strike_graph = []
+  
+  for(let i=-20; i<price_diff; i++){
+    // console.log(data[i])
+    kospi_axis.push(cur_kospi + i)
+    kospi_value.push(i)
+    if(!isFirst){
+      cc_value.push(i + premium)
+    }
+  }
+  for(let i=price_diff; i<30; i++){
+    // console.log(data[i])
+    kospi_axis.push(cur_kospi + i)
+    kospi_value.push(i)
+    if(!isFirst){
+      cc_value.push(price_diff+premium)
+    }
+  }
+  var first_padding = 0
+  if (isFirst){
+    price_diff = 100
+    first_padding = 100
+  }
+  console.log(cc_value)
+  // console.log(date)
+  if (graph != null){
+    graph.destroy()
+  }
+  graph = new Chart(document.getElementById("profit_graph"), {
+    type: 'line',
+    data: {
+        labels: kospi_axis,
+        datasets: [
+          {
+            label: 'KOSPI',
+            data: kospi_value,
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointRadius: 0,
+            pointBackgroundColor: '#007bff',
+            pointStyle: 'rectRounded'
+          },
+          {
+            label: 'With option',
+            data: cc_value,
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#EC6D1E',
+            borderWidth: 4,
+            pointRadius: 0,
+            pointBackgroundColor: '#EC6D1E',
+            pointStyle: 'rectRounded'
+          }
+        ]
+    },
+    options: {
+      scales:{
+        y: {
+          title: {
+            display: true,
+            text: '수익',
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'KOSPI'
+          }
+        }
+      },
+      plugins: {
+        annotation: {
+          annotations: {
+            line1: {
+              type: 'line',
+              xMin: 20 + price_diff,
+              xMax: 20 + price_diff,
+
+              endValue: 0,
+              borderColor: 'rgb(255, 99, 132)',
+              borderWidth: 4,
+              label: {
+                enabled: true,
+                content: '행사 가격',
+                position: '80%',
+                backgroundColor: 'rgb(255, 99, 132)',
+              }
+            },
+            line2: {
+              type: 'line',
+              xMin: 20,
+              xMax: 20,
+
+              endValue: 0,
+              borderColor: 'rgb(0, 0, 0)',
+              borderWidth: 4,
+              label: {
+                enabled: true,
+                content: '현재 KOSPI',
+                position: '92%',
+                backgroundColor: 'rgb(0, 0, 0)',
+              }
+            },
+          }
+        },
+        legend: {
+          display: true,
+          labels: {
+            usePointStyle: true,
+            fontSize: 13,
+          }
+        },
+      },
+      responsive: false
+    }
+  });
+  
+}
