@@ -160,8 +160,6 @@ var graph = null;
 
 async function draw_profit_graph(isFirst) {
   console.log("Draw!!")
-  const BASEURL = 'http://127.0.0.1:8080/'
-  const response = await fetch(BASEURL);
 
   const cur_kospi = 325.0 
   strike_price = 0
@@ -171,6 +169,12 @@ async function draw_profit_graph(isFirst) {
   else{
     strike_price = document.getElementById("strike_price").value
   }
+  const amount_ratio = parseFloat(document.getElementById("amount").value) / 10
+  
+  
+  console.log("strike", parseFloat(document.getElementById("amount").value))
+  console.log("ratio", amount_ratio)
+
 
   const premium = parseFloat(document.getElementById("premium").value)
   const kospi_axis = []
@@ -180,13 +184,15 @@ async function draw_profit_graph(isFirst) {
   var price_diff = Math.ceil(strike_price - cur_kospi)
   console.log(price_diff)
   const_strike_graph = []
+
+
   
   for(let i=-20; i<price_diff; i++){
     // console.log(data[i])
     kospi_axis.push(cur_kospi + i)
     kospi_value.push(i)
     if(!isFirst){
-      cc_value.push(i + premium)
+      cc_value.push(i + premium * amount_ratio)
     }
   }
   for(let i=price_diff; i<30; i++){
@@ -194,7 +200,7 @@ async function draw_profit_graph(isFirst) {
     kospi_axis.push(cur_kospi + i)
     kospi_value.push(i)
     if(!isFirst){
-      cc_value.push(price_diff+premium)
+      cc_value.push(i + premium* amount_ratio - (i-price_diff) *(amount_ratio))
     }
   }
   var first_padding = 0

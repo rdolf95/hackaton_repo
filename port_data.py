@@ -7,12 +7,17 @@ from stock_price import get_stock_price, get_etf_price, get_kospi_price
 
 
 
-def get_port_graph_data():
+def get_port_graph_data(param):
 
     con = sqlite3.connect("hedgeNOhedgeDB.db")
     cur = con.cursor()
     #data 조회
-    cur.execute(" SELECT * FROM 'Stock' ")
+    row_list = []
+    if param == '0':
+        cur.execute(" SELECT * FROM 'Stock' ")
+    elif param == '1':
+        cur.execute(" SELECT * FROM 'Stock2' ")
+
     row_list = cur.fetchall()
 
     today = datetime.now()
@@ -25,11 +30,14 @@ def get_port_graph_data():
 
     #내가 보유한 주식정보(포트폴리오) DB에서 가져옴
     diff = []
+    total_buy = 0
     for i in row_list:  # i: 종목별
         tick = i[1]
         num = i[2]
         buy = i[3]
         diff = get_stock_price(fromdate=prev_month, todate=today, ticker= tick)
+
+        total_buy += buy*num
 
         for j in range(len(diff)):  # j : 날짜별
             difflist[j] += (diff.loc[j][1] - buy) * num
@@ -41,7 +49,7 @@ def get_port_graph_data():
 
     for j in range(len(datelist)):
         if datelist[j] != 0:
-            result.append((datelist[j].strftime("%Y/%m/%d"), str(difflist[j])))
+            result.append((datelist[j].strftime("%Y/%m/%d"), str((difflist[j] / total_buy) * 100)))
 
     #print(result)
     # difflist : 최근 30일간의 내 portfolio 수익률을 list로 저장 (영업일이 아닌 날은 마지막에 0으로 들어감)
@@ -68,7 +76,7 @@ def get_etf_graph_data():
     return json.dumps(etfDiffList) #리스트 형태로 데이터 전송
 
 
-def get_kospi_graph_data():
+def get_kospi_graph_data(param):
 
     today = datetime.now()
     today = today.strftime('%Y%m%d')
@@ -77,8 +85,6 @@ def get_kospi_graph_data():
 
     kospi_diff = get_kospi_price(fromdate= prev_month, todate= today, ticker= "1028")
     kospiDiffList = [0 for _ in range(30)]
-
-    print(kospi_diff)
     
 
     for i in range(len(kospi_diff)):
@@ -89,14 +95,17 @@ def get_kospi_graph_data():
 
     return json.dumps(kospiDiffList) #리스트 형태로 데이터 전송
 
-def get_port_profit():
+def get_port_profit(param):
 
     json_res = {}
 
     con = sqlite3.connect("hedgeNOhedgeDB.db")
     cur = con.cursor()
     #data 조회
-    cur.execute(" SELECT * FROM 'Stock' ")
+    if param == '0':
+        cur.execute(" SELECT * FROM 'Stock' ")
+    elif param == '1':
+        cur.execute(" SELECT * FROM 'Stock2' ")
     row_list = cur.fetchall()
 
     today = datetime.now()
@@ -140,9 +149,6 @@ def get_cur_kospi():
 
     kospi_diff = get_kospi_price(fromdate= prev_month, todate= today, ticker= "1028")
     kospiDiffList = [0 for _ in range(30)]
-
-    print(kospi_diff)
-    
 
     for i in range(len(kospi_diff)):
         kospiDiffList[i] = (str(kospi_diff.loc[i][0].strftime("%Y/%m/%d")), str(kospi_diff.loc[i][1]))
