@@ -182,7 +182,7 @@
           <script>
             getData();
             async function getData() {
-              const BASEURL = 'http://127.0.0.1:8080/'
+              const BASEURL = 'http://3.38.251.51/:8080/'
               const response = await fetch(BASEURL+'get_port_graph_data');
               const data = await response.json();
               console.log(data.length)
@@ -230,7 +230,7 @@
           <script>
             getData();
             async function getData() {
-              const BASEURL = 'http://127.0.0.1:8080/'
+              const BASEURL = 'http://3.38.251.51/:8080/'
               const response = await fetch(BASEURL+'get_kospi_graph_data');
               const data = await response.json();
               const date = []
@@ -293,7 +293,7 @@
           fillTable()
           
           async function fillTable(){
-            const BASEURL = 'http://127.0.0.1:8080/'
+            const BASEURL = 'http://3.38.251.51/:8080/'
             const response = await fetch(BASEURL+'get_port_profit');
             const data = await response.json();
             let cnt = 1;
@@ -325,7 +325,7 @@
       document.getElementsByClassName('layerPopup')[0].style.visibility='visible';
 
       let userList = document.getElementById('userList');
-      const BASEURL = 'http://127.0.0.1:8080/';
+      const BASEURL = 'http://3.38.251.51/:8080/';
       const corp_name = userList.rows[num].cells[0].innerText;
       const stock_code = userList.rows[num].cells[1].innerText;
       location.href = BASEURL+'form_submit_get?hidden_corp_name='+corp_name+'&hidden_stock_code='+stock_code+'.KS';
