@@ -301,8 +301,8 @@ async function draw_profit_graph(isFirst) {
             },
             line2: {
               type: 'line',
-              xMin: 20,
-              xMax: 20,
+              xMin: 19,
+              xMax: 19,
 
               endValue: 0,
               borderColor: 'rgb(0, 0, 0)',
