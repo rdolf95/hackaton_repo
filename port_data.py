@@ -30,11 +30,14 @@ def get_port_graph_data(param):
 
     #내가 보유한 주식정보(포트폴리오) DB에서 가져옴
     diff = []
+    total_buy = 0
     for i in row_list:  # i: 종목별
         tick = i[1]
         num = i[2]
         buy = i[3]
         diff = get_stock_price(fromdate=prev_month, todate=today, ticker= tick)
+
+        total_buy += buy*num
 
         for j in range(len(diff)):  # j : 날짜별
             difflist[j] += (diff.loc[j][1] - buy) * num
@@ -46,7 +49,7 @@ def get_port_graph_data(param):
 
     for j in range(len(datelist)):
         if datelist[j] != 0:
-            result.append((datelist[j].strftime("%Y/%m/%d"), str(difflist[j])))
+            result.append((datelist[j].strftime("%Y/%m/%d"), str((difflist[j] / total_buy) * 100)))
 
     #print(result)
     # difflist : 최근 30일간의 내 portfolio 수익률을 list로 저장 (영업일이 아닌 날은 마지막에 0으로 들어감)
@@ -82,8 +85,6 @@ def get_kospi_graph_data(param):
 
     kospi_diff = get_kospi_price(fromdate= prev_month, todate= today, ticker= "1028")
     kospiDiffList = [0 for _ in range(30)]
-
-    print(kospi_diff)
     
 
     for i in range(len(kospi_diff)):
@@ -148,9 +149,6 @@ def get_cur_kospi():
 
     kospi_diff = get_kospi_price(fromdate= prev_month, todate= today, ticker= "1028")
     kospiDiffList = [0 for _ in range(30)]
-
-    print(kospi_diff)
-    
 
     for i in range(len(kospi_diff)):
         kospiDiffList[i] = (str(kospi_diff.loc[i][0].strftime("%Y/%m/%d")), str(kospi_diff.loc[i][1]))
