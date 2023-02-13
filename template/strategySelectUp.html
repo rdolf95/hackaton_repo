@@ -96,6 +96,7 @@
           bottom: 120%;
           opacity: 0;
           transition: all 0.5s linear;
+          pointer-events: none;
       }
       .tooltip-link[data-tooltip]:not([data-tooltip=""])::after {
           content: '';
@@ -112,6 +113,7 @@
           transform: translate(-50%, 0);
           opacity: 0;
           transition: all 0.5s linear;
+          pointer-events: none;
       }
       .tooltip-link:hover[data-tooltip]:not([data-tooltip=""])::before
       , .tooltip-link:hover[data-tooltip]:not([data-tooltip=""])::after {
