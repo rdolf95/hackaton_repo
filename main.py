@@ -253,6 +253,10 @@ def strategyUp():
 def strategyDown():
     return render_template("strategySelectDown.html")
 
+@app.route('/toplist')
+def showtoplist():
+    return render_template("toplist.html")
+
 @app.route('/get_premium', methods=['post'])
 def get_premium():
 
