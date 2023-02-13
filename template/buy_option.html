@@ -265,7 +265,7 @@
   <script>
     function getUserName(num) {
       let userList = document.getElementById('userList');
-      const BASEURL = 'http://127.0.0.1:8080/';
+      const BASEURL = 'http://43.200.252.29:8080/';
       const corp_name = userList.rows[num].cells[0].innerText;
       const stock_code = userList.rows[num].cells[1].innerText;
       location.href = BASEURL+'form_submit_get?hidden_corp_name='+corp_name+'&hidden_stock_code='+stock_code+'.KS';
