@@ -239,7 +239,7 @@ def index():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template("index.html")
+    return render_template("index.html", param='0', name='김준영')
 
 @app.route('/strategy')
 def strategy():
@@ -256,6 +256,10 @@ def strategyDown():
 @app.route('/toplist')
 def showtoplist():
     return render_template("toplist.html")
+
+@app.route('/toplist/dashboard')
+def topDash():
+    return render_template("index.html", param='1', name='김민재')
 
 @app.route('/get_premium', methods=['post'])
 def get_premium():
@@ -274,6 +278,7 @@ def get_premium():
 @app.route('/get_port_graph_data')
 def get_port_graph_data():
     param = request.args.get('param', default = '0', type = str)
+    print(param)
     return port_data.get_port_graph_data(param)
 
 @app.route('/get_kospi_graph_data')
@@ -284,6 +289,7 @@ def get_kospi_graph_data():
 @app.route('/get_port_profit')
 def get_port_profit():
     param = request.args.get('param', default = '0', type = str)
+    print("port profit", param)
     return json.loads(port_data.get_port_profit(param))
     
 if __name__ == '__main__':
