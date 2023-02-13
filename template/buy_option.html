@@ -234,7 +234,16 @@
             <div class="btn-group me-2" float:right>
               <label class="total-input"><input id="total" name="total" value="" disabled>
               </input></label>
-              <button type="button" class="btn btn-sm btn-outline-secondary" onclick = "location.href = '/order_res' "> 주문 체결</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" style="width:100px;" onclick = alert_order()> 주문 체결</button>
+              <script>
+                function alert_order(){
+                  alert("주문 완료");
+                  const BASEURL = 'http://43.200.252.29:8080/'
+                  location.href = BASEURL+'order_res';
+                  location.replace(link);
+                  window.open(link);
+                }
+              </script>
             </div>
           </div>
         </div>
@@ -244,7 +253,7 @@
             <h2 class="h2">손익그래프</h2>
           </div>
           <div style="float:left; width:33%; height:60;" >
-            <canvas id="profit_graph" width="550px" height="350px" ></canvas>
+            <canvas id="profit_graph" width="1050px" height="450px" ></canvas>
             <script>
               //draw_profit_graph(true);
               
