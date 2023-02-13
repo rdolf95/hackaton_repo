@@ -145,7 +145,7 @@
             getData();
             async function getData() {
               const BASEURL = 'http://127.0.0.1:8080/'
-              const response = await fetch(BASEURL+'get_port_graph_data');
+              const response = await fetch(BASEURL+'get_port_graph_data' + '?param=0');
               const data = await response.json();
               console.log(data.length)
               const date = []
@@ -193,7 +193,7 @@
             getData();
             async function getData() {
               const BASEURL = 'http://127.0.0.1:8080/'
-              const response = await fetch(BASEURL+'get_kospi_graph_data');
+              const response = await fetch(BASEURL+'get_kospi_graph_data'+ '?param=0');
               const data = await response.json();
               const date = []
               const value = []
@@ -256,7 +256,7 @@
           
           async function fillTable(){
             const BASEURL = 'http://127.0.0.1:8080/'
-            const response = await fetch(BASEURL+'get_port_profit');
+            const response = await fetch(BASEURL+'get_port_profit'+ '?param=0');
             const data = await response.json();
             let cnt = 1;
             for(key in data){

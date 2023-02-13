@@ -271,15 +271,18 @@ def get_premium():
 
 @app.route('/get_port_graph_data')
 def get_port_graph_data():
-    return port_data.get_port_graph_data()
+    param = request.args.get('param', default = '0', type = str)
+    return port_data.get_port_graph_data(param)
 
 @app.route('/get_kospi_graph_data')
 def get_kospi_graph_data():
-    return port_data.get_kospi_graph_data()
+    param = request.args.get('param', default = '0', type = str)
+    return port_data.get_kospi_graph_data(param)
 
 @app.route('/get_port_profit')
 def get_port_profit():
-    return json.loads(port_data.get_port_profit())
+    param = request.args.get('param', default = '0', type = str)
+    return json.loads(port_data.get_port_profit(param))
     
 if __name__ == '__main__':
     app.debug = True
