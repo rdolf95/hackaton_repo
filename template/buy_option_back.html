@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Dashboard Template · Bootstrap v5.2</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/buy_option.js"></script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+    <script src="dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.3.1/chartjs-plugin-annotation.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/select_box.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+ <!-- Custom styles for this template -->
+</head>
+<body>
+  
+<header class="navbar bg-body-trtiary sticky-top flex-md-nowrap p-0 shadow" style="background-color: rgb(236,109,30);" >
+<a class="navbar col-md-3 col-lg-2 me-0 px-3 fs-6" href="/dashboard"><img src="/static/images/hedge.PNG" class="img-thumbnail" style="width:6rem;"/></a>
+<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+</header>
+
+<div class="container-fluid">
+<div class="row">
+  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="margin-top: 2em;">
+    <div class="position-sticky pt-3 sidebar-sticky">
+      <ul class="nav flex-column ">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/dashboard" style="color: rgb(236,109,30);">
+            <span data-feather="home" class="align-text-bottom"></span>
+            홈
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/strategy">
+            <span data-feather="file" class="align-text-bottom"></span>
+            옵션 포트폴리오 구성하기
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/strategy">
+            <span data-feather="dollar-sign" class="align-text-bottom"></span>
+            Top수익 포트폴리오 보기
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span data-feather="shopping-cart" class="align-text-bottom"></span>
+            거래내역
+          </a>
+        </li>
+      </ul>
+
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+        <span>Saved reports</span>
+        <a class="link-secondary" href="#" aria-label="Add a new report">
+          <span data-feather="plus-circle" class="align-text-bottom"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            도움말
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            로그아웃
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="order-div">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h2 class="h2">주문체결</h2>
+        </div>
+        <div class=select-box id = "select-box-2">
+          <span class=custom-span>종목</span> 
+          <label class="custom-input" for="styledSelect4"><input id="kospi_option" name="options" value="KOSPI200 콜 옵션 매도" disabled>
+          </input></label>
+        </div>
+        <div class=select-box id = "select-box-1">
+            <span class=custom-span>만기</span>
+            <label class="year-select" for="styledSelect1"><select id="maturity_year" name="options">
+              <option value="">
+                Year
+              </option>
+              <option value="2023" selected>
+                2023
+              </option>
+              <option value="2024">
+                2024
+              </option>
+              <option value="2025">
+                2025
+              </option>
+
+            </select></label>
+            <label class="day-select" for="styledSelect1"><select id="maturity_month" name="options">
+              <option value="">
+                Month
+              </option>
+
+            </select></label>
+        </div>
+        <div class=select-box id = "select-box-2">
+            <span class=custom-span>행사가격</span>
+            <label class="custom-select" for="styledSelect2"><select id="strike_price" name="options">
+              <option value="">
+                행사가격
+              </option>
+            </select></label>
+        </div>
+        <div class=select-box id = "select-box-2">
+            <span class=custom-span>계약수</span>
+            <label class="custom-input" for="styledSelect3"><input id="amount" name="options" value="10">
+            </input></label>
+        </div>
+        <div class=select-box id = "select-box-2">
+            <span class=custom-span>프리미엄</span> 
+            <label class="custom-input" for="styledSelect4"><input id="premium" name="options" value="10.0" disabled>
+            </input></label>
+        </div>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2" float:right>
+            <button type="button" class="btn btn-sm btn-outline-secondary"> 주문 체결</button>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="profit-div">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h2 class="h2">손익그래프</h2>
+        </div>
+        <div style="float:left; width:33%; height:60;" >
+          <canvas id="profit_graph" width="550px" height="350px" ></canvas>
+          <script>
+            //draw_profit_graph(true);
+            
+          </script>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+
+    
+    <meta id="my-kospi" data-kospi="{{cur_kospi}}">
+    <script>
+    
+    $(document).on('change', '#strike_price', function() {
+      $.ajax({  url: "/get_premium" ,
+                type : "post",
+                data: {"strike_price" : $("#strike_price").val(),
+                       "maturity_month" : $("#maturity_month").val() } ,
+                success: function(flask_return_str) {
+                      console.log(flask_return_str);
+                      $('#premium').val(JSON.parse(flask_return_str))
+                      //$("#profit_graph").find('option').remove()
+                      draw_profit_graph(false);
+                 },
+                error: function(res){  } ,
+                crossDomain: true
+            });
+  });
+
+  $(document).ready(function() {
+    $("#maturity_month").find('option').remove()
+    add_month_option($("#maturity_year").val())
+    $('#maturity_month').val(5).prop('selected', 'true');
+    $("#strike_price").find('option').remove()
+    default_strike_price()
+    add_strike_price_option()
+
+    var cur_strike = 340.0
+    $("#strike_price").val(cur_strike).prop("selected", true);
+
+    $.ajax({  url: "/get_premium" ,
+                type : "post",
+                data: {"strike_price" : $("#strike_price").val(),
+                       "maturity_month" : $("#maturity_month").val() } ,
+                success: function(flask_return_str) {
+                      console.log(flask_return_str);
+                      $('#premium').val(JSON.parse(flask_return_str))
+                      draw_profit_graph(false);
+                 },
+                error: function(res){  } ,
+                crossDomain: true
+            });
+  });
+
+  $(document).on('change', '#maturity_year', function() {
+    $("#maturity_month").find('option').remove()
+    add_month_option($("#maturity_year").val())
+    $("#strike_price").find('option').remove()
+    default_strike_price()
+  });
+
+  $(document).on('change', '#maturity_month', function() {
+    $("#strike_price").find('option').remove()
+    default_strike_price()
+    add_strike_price_option()
+
+    var cur_strike = 340.0
+    $("#strike_price").val(cur_strike).prop("selected", true);
+
+    $.ajax({  url: "/get_premium" ,
+                type : "post",
+                data: {"strike_price" : $("#strike_price").val(),
+                       "maturity_month" : $("#maturity_month").val() } ,
+                success: function(flask_return_str) {
+                      console.log(flask_return_str);
+                      $('#premium').val(JSON.parse(flask_return_str))
+                      draw_profit_graph(false);
+                 },
+                error: function(res){  } ,
+                crossDomain: true
+            });
+  });
+
+  </script>
+
+  
+  </body>
+</html>
