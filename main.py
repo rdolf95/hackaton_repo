@@ -259,7 +259,7 @@ def showtoplist():
 
 @app.route('/order_res')
 def order_res():
-    return render_template("order_res.html")
+    return render_template("order_res.html", param='0')
 
 @app.route('/toplist/dashboard')
 def topDash():
