@@ -69,7 +69,8 @@
       }
 
       .layerPopup {
-        display:none;
+        /* display:none; */
+        visibility: hidden;
         position: fixed;
         top: 0;
         left: 0;
@@ -321,6 +322,8 @@
 
   <script>
     function getUserName(num) {
+      document.getElementsByClassName('layerPopup')[0].style.visibility='visible';
+
       let userList = document.getElementById('userList');
       const BASEURL = 'http://127.0.0.1:8080/';
       const corp_name = userList.rows[num].cells[0].innerText;
@@ -332,7 +335,7 @@
   </script>
     <script>
       function showSpinner() {
-        document.getElementsByClassName('layerPopup')[0].style.display='block';
+        document.getElementsByClassName('layerPopup')[0].style.visibility='visible';
       }
       function hideSpinner() {
         document.getElementsByClassName('layerPopup')[0].style.display='none';
