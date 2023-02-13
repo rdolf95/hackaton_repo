@@ -187,6 +187,7 @@ async function draw_profit_graph(isFirst) {
   const kospi_axis = []
   const kospi_value = []
   const cc_value = []
+  const option_value = []
   console.log("pre", premium)  
   var price_diff = Math.ceil(strike_price - cur_kospi)
   console.log(price_diff)
@@ -200,6 +201,7 @@ async function draw_profit_graph(isFirst) {
     kospi_value.push(i)
     if(!isFirst){
       cc_value.push(i + premium * amount_ratio)
+      option_value.push(premium * amount_ratio)
     }
   }
   for(let i=price_diff; i<30; i++){
@@ -208,6 +210,7 @@ async function draw_profit_graph(isFirst) {
     kospi_value.push(i)
     if(!isFirst){
       cc_value.push(i + premium* amount_ratio - (i-price_diff) *(amount_ratio))
+      option_value.push(premium * amount_ratio- (i-price_diff) *(amount_ratio))
     }
   }
   var first_padding = 0
@@ -234,7 +237,20 @@ async function draw_profit_graph(isFirst) {
             borderWidth: 4,
             pointRadius: 0,
             pointBackgroundColor: '#007bff',
-            pointStyle: 'rectRounded'
+            pointStyle: 'rectRounded',
+            borderDash: [8,6]
+          },
+          {
+            label: 'Option',
+            data: option_value,
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#008000',
+            borderWidth: 4,
+            pointRadius: 0,
+            pointBackgroundColor: '#008000',
+            pointStyle: 'rectRounded',
+            borderDash: [8,5]
           },
           {
             label: 'With option',
@@ -245,7 +261,8 @@ async function draw_profit_graph(isFirst) {
             borderWidth: 4,
             pointRadius: 0,
             pointBackgroundColor: '#EC6D1E',
-            pointStyle: 'rectRounded'
+            pointStyle: 'rectRounded',
+            
           }
         ]
     },
