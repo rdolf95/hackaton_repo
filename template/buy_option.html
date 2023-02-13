@@ -18,13 +18,6 @@
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
 
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
@@ -163,11 +156,23 @@
           </div>
           <div class=select-box id = "select-box-2">
             <span class=custom-span>종목</span> 
+            <button type="button" class="btn btn-outline-light btn-lg btn-custom tooltip-link" data-tooltip="기초자산 가격이 하락할 것으로 예상되면 풋옵션을 매수하여 시세차익을 얻을 수 있다. 기초자산을 정해진 기간내(또는 정해진 일시)에 일정한 행사가격으로 매수할 수 있는 권리이다." style="background-color: rgb(236, 109, 30) width:0 height:30;" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16" style=" color: rgb(236, 109, 30);">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+              </svg>
+              </button>
             <label class="custom-input" for="styledSelect4"><input id="kospi_option" name="options" value="KOSPI200 콜 옵션 매도" disabled>
             </input></label>
           </div>
           <div class=select-box id = "select-box-1">
               <span class=custom-span>만기</span>
+              <button type="button" class="btn btn-outline-light btn-lg btn-custom tooltip-link" data-tooltip="기초자산 가격이 하락할 것으로 예상되면 풋옵션을 매수하여 시세차익을 얻을 수 있다. 기초자산을 정해진 기간내(또는 정해진 일시)에 일정한 행사가격으로 매수할 수 있는 권리이다." style="background-color: rgb(236, 109, 30) width:0 height:30;" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16" style=" color: rgb(236, 109, 30);">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                </svg>
+              </button>
               <label class="year-select" for="styledSelect1"><select id="maturity_year" name="options">
                 <option value="">
                   Year
@@ -192,6 +197,12 @@
           </div>
           <div class=select-box id = "select-box-2">
               <span class=custom-span>행사가격</span>
+              <button type="button" class="btn btn-outline-light btn-lg btn-custom tooltip-link" data-tooltip="기초자산 가격이 하락할 것으로 예상되면 풋옵션을 매수하여 시세차익을 얻을 수 있다. 기초자산을 정해진 기간내(또는 정해진 일시)에 일정한 행사가격으로 매수할 수 있는 권리이다." style="background-color: rgb(236, 109, 30) width:0 height:30;" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16" style=" color: rgb(236, 109, 30);">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                </svg>
+                </button>
               <label class="custom-select" for="styledSelect2"><select id="strike_price" name="options">
                 <option value="">
                   행사가격
@@ -200,11 +211,23 @@
           </div>
           <div class=select-box id = "select-box-2">
               <span class=custom-span>계약수</span>
-              <label class="custom-input" for="styledSelect3"><input id="amount" name="options" value="10">
+              <button type="button" class="btn btn-outline-light btn-lg btn-custom tooltip-link" data-tooltip="기초자산 가격이 하락할 것으로 예상되면 풋옵션을 매수하여 시세차익을 얻을 수 있다. 기초자산을 정해진 기간내(또는 정해진 일시)에 일정한 행사가격으로 매수할 수 있는 권리이다." style="background-color: rgb(236, 109, 30) width:0 height:30;" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16" style=" color: rgb(236, 109, 30);">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                </svg>
+                </button>
+              <label class="custom-input" for="styledSelect3"><input id="amount" name="options" value="60">
               </input></label>
           </div>
           <div class=select-box id = "select-box-2">
               <span class=custom-span>프리미엄</span> 
+              <button type="button" class="btn btn-outline-light btn-lg btn-custom tooltip-link" data-tooltip="기초자산 가격이 하락할 것으로 예상되면 풋옵션을 매수하여 시세차익을 얻을 수 있다. 기초자산을 정해진 기간내(또는 정해진 일시)에 일정한 행사가격으로 매수할 수 있는 권리이다." style="background-color: rgb(236, 109, 30) width:0 height:30;" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16" style=" color: rgb(236, 109, 30);">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                </svg>
+                </button>
               <label class="custom-input" for="styledSelect4"><input id="premium" name="options" value="10.0" disabled>
               </input></label>
           </div>

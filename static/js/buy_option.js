@@ -169,7 +169,7 @@ async function draw_profit_graph(isFirst) {
   else{
     strike_price = document.getElementById("strike_price").value
   }
-  const amount_ratio = parseFloat(document.getElementById("amount").value) / 10
+  const amount_ratio = parseFloat(document.getElementById("amount").value) / 60
   
   
   console.log("strike", parseFloat(document.getElementById("amount").value))
