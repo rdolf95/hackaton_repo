@@ -314,7 +314,6 @@
             const response = await fetch(BASEURL+'get_port_profit'+ '?param=' + {{param}});
             const data = await response.json();
             let cnt = 1;
-            console.log(data)
             for(key in data){
               document.querySelector("tbody").innerHTML +=
                 "<tr>"+
