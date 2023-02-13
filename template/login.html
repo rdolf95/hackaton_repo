@@ -17,16 +17,16 @@
             <div class="input-group">
               <i class='bx bxs-user'></i>
               <!-- 사용자 ID -->
-              <input type="text" placeholder="ID">
+              <input type="text" placeholder="ID" >
             </div>
             <div class="input-group">
               <i class='bx bx-mail-send'></i>
-              <input type="email" placeholder="Email">
+              <input type="email" placeholder="Email" >
             </div>
               <!-- 사용자 PW -->
             <div class="input-group">
               <i class='bx bxs-lock-alt'></i>
-              <input type="password" placeholder="Password">
+              <input type="password" placeholder="Password" >
             </div>
             <div class="input-group">
               <i class='bx bxs-lock-alt'></i>
@@ -43,6 +43,7 @@
               <b onclick="toggle()" class="pointer">
                 로그인
               </b>
+              
             </p>
           </div>
         </div>
@@ -58,13 +59,33 @@
           <div class="form sign-in">
             <div class="input-group">
               <i class='bx bxs-user'></i>
-              <input type="text" placeholder="ID">
+              <input type="text" placeholder="ID" id="id">
             </div>
             <div class="input-group">
               <i class='bx bxs-lock-alt'></i>
-              <input type="password" placeholder="Password">
+              <input type="password" placeholder="Password" id="password">
             </div>
-            <button onclick="location.href='/dashboard'"> Login </button>
+            <!-- <button onclick="location.href='/dashboard'"> Login </button> -->
+            <button onclick=login()> Login </button>
+            <script>
+              function login(){
+                
+
+                const id = "kos123"
+                const password = "1234"
+                const input_id = document.getElementById('id').value
+                const input_pw = document.getElementById('password').value
+                const BASEURL = 'http://43.200.252.29:8080/'
+                if(id !== input_id || password !== input_pw){
+                  alert('아이디와 비밀번호가 일치하지 않습니다.')
+                }
+                else{
+                  location.href = BASEURL+'/dashboard';
+                  location.replace(link);
+                  window.open(link);
+                }
+                }
+            </script>
             <p>
               <b>
                 비밀번호 찾기
