@@ -142,7 +142,6 @@ def form_submit_get():
                            BAR_DATA_LIST_DG=bar_dg_list,MY_NEWS=json_obj, MY_CODE=code,
                            MY_HIGH=high_stock, MY_LOW=low_stock, MY_CLOSE=close_stock,
                            MY_MAE=mae_mean,
-                           # -------220222(날씨!!!!!!!!!!)
                            WEATHER_DATA_LIST=weather_list,  # PER PBR ROE EPS BPS
                            ICONS=icons,
                            FOREIGN=foreign,  # 외인 매수
@@ -155,9 +154,8 @@ def form_submit_get():
 
 
 # ====================================================
-#                 함수 by KMS
+#                 함수 
 # ====================================================
-# chart_data : KMS 2022.02.21
 # 사용자가 선택한 날짜에 맞추어 해당 기업의 주가정보를 반영해 주는 함수.
 # 날짜지정을 하지 않을경우 해당기업의 1년 주가정보를 반영.
 def chart_data(ent, select_date = None):
@@ -227,7 +225,7 @@ def finance_data(stock_code):
 ######
 
 # ====================================================
-#                    메인 페이지 by 최상현
+#                    메인 페이지
 # ====================================================
 
 
@@ -241,7 +239,7 @@ def index():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template("index.html")
+    return render_template("index.html", param='0', name='김준영')
 
 @app.route('/strategy')
 def strategy():
@@ -254,6 +252,18 @@ def strategyUp():
 @app.route('/strategySelectDown')
 def strategyDown():
     return render_template("strategySelectDown.html")
+
+@app.route('/toplist')
+def showtoplist():
+    return render_template("toplist.html")
+
+@app.route('/order_res')
+def order_res():
+    return render_template("order_res.html", param='0')
+
+@app.route('/toplist/dashboard')
+def topDash():
+    return render_template("index.html", param='1', name='김민재')
 
 @app.route('/get_premium', methods=['post'])
 def get_premium():
@@ -271,15 +281,20 @@ def get_premium():
 
 @app.route('/get_port_graph_data')
 def get_port_graph_data():
-    return port_data.get_port_graph_data()
+    param = request.args.get('param', default = '0', type = str)
+    print(param)
+    return port_data.get_port_graph_data(param)
 
 @app.route('/get_kospi_graph_data')
 def get_kospi_graph_data():
-    return port_data.get_kospi_graph_data()
+    param = request.args.get('param', default = '0', type = str)
+    return port_data.get_kospi_graph_data(param)
 
 @app.route('/get_port_profit')
 def get_port_profit():
-    return json.loads(port_data.get_port_profit())
+    param = request.args.get('param', default = '0', type = str)
+    print("port profit", param)
+    return json.loads(port_data.get_port_profit(param))
     
 if __name__ == '__main__':
     app.debug = True
