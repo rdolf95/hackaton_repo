@@ -161,7 +161,6 @@ var graph = null;
 async function draw_profit_graph(isFirst) {
   console.log("Draw!!")
 
-
   const cur_kospi = 325.0 
   strike_price = 0
   if (isFirst){

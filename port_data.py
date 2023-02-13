@@ -7,12 +7,17 @@ from stock_price import get_stock_price, get_etf_price, get_kospi_price
 
 
 
-def get_port_graph_data():
+def get_port_graph_data(param):
 
     con = sqlite3.connect("hedgeNOhedgeDB.db")
     cur = con.cursor()
     #data 조회
-    cur.execute(" SELECT * FROM 'Stock' ")
+    row_list = []
+    if param == '0':
+        cur.execute(" SELECT * FROM 'Stock' ")
+    elif param == '1':
+        cur.execute(" SELECT * FROM 'Stock2' ")
+
     row_list = cur.fetchall()
 
     today = datetime.now()
@@ -68,7 +73,7 @@ def get_etf_graph_data():
     return json.dumps(etfDiffList) #리스트 형태로 데이터 전송
 
 
-def get_kospi_graph_data():
+def get_kospi_graph_data(param):
 
     today = datetime.now()
     today = today.strftime('%Y%m%d')
@@ -89,14 +94,17 @@ def get_kospi_graph_data():
 
     return json.dumps(kospiDiffList) #리스트 형태로 데이터 전송
 
-def get_port_profit():
+def get_port_profit(param):
 
     json_res = {}
 
     con = sqlite3.connect("hedgeNOhedgeDB.db")
     cur = con.cursor()
     #data 조회
-    cur.execute(" SELECT * FROM 'Stock' ")
+    if param == '0':
+        cur.execute(" SELECT * FROM 'Stock' ")
+    elif param == '1':
+        cur.execute(" SELECT * FROM 'Stock2' ")
     row_list = cur.fetchall()
 
     today = datetime.now()
