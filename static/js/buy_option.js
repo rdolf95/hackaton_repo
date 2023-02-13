@@ -158,7 +158,7 @@ function add_strike_price_option() {
 function get_total() {
   let premium = parseFloat(document.getElementById("premium").value)
   let amount = parseFloat(document.getElementById("amount").value)
-  let result = (premium * amount * 250000).toLocaleString();
+  let result = '+' + (premium * amount * 250000).toLocaleString();
   return result
 }
 
