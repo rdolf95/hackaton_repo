@@ -160,8 +160,6 @@ var graph = null;
 
 async function draw_profit_graph(isFirst) {
   console.log("Draw!!")
-  const BASEURL = 'http://127.0.0.1:8080/'
-  const response = await fetch(BASEURL);
 
   const cur_kospi = 325.0 
   strike_price = 0
