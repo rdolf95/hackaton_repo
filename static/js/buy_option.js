@@ -155,13 +155,20 @@ function add_strike_price_option() {
   }
 }
 
+function get_total() {
+  let premium = parseFloat(document.getElementById("premium").value)
+  let amount = parseFloat(document.getElementById("amount").value)
+  let result = '+' + (premium * amount * 250000).toLocaleString();
+  return result
+}
+
 
 var graph = null;
 
 async function draw_profit_graph(isFirst) {
   console.log("Draw!!")
 
-  const cur_kospi = 325.0 
+  const cur_kospi = 320.0 
   strike_price = 0
   if (isFirst){
     strike_price = 335.0

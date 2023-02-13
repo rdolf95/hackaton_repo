@@ -162,6 +162,73 @@
   text-align: center;
 }
 
+.deposit-input {
+  position: relative;
+  display: block;
+  max-width: 200px;
+  max-height: 40px;
+  min-width: 180px;
+  margin: 0 auto;
+  border: 1px solid #0000002d;
+  background-color: #eeeeee;
+  z-index: 1;
+  float: left;
+  margin-right: 30px;
+  margin-left: 50px;
+  margin
+}
+
+.deposit-input input {
+  border: none;
+  outline: none;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+  padding: 10px 5px 15px 10px;
+  font-size: 14px;
+  color: #714BB9;
+  text-align: center;
+  
+}
+
+.total-input {
+  position: relative;
+  display: block;
+  max-width: 200px;
+  max-height: 40px;
+  min-width: 180px;
+  margin: 0 auto;
+  border: 1px solid #0000002d;
+  background-color: #eeeeee;
+  z-index: 1;
+  float: left;
+  margin-right: 30px;
+  margin-left: 15px;
+}
+
+.total-input input {
+  border: none;
+  outline: none;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+  padding: 10px 5px 15px 10px;
+  font-size: 14px;
+  color: #714BB9;
+  text-align: center;
+  
+}
+
 .btn-custom {
   min-height: 0px;
   min-width: 0px;
@@ -178,6 +245,15 @@
   min-height: 50px;
   font-size: 15pt;
   padding-top: 3px;
+}
+
+.total-span{
+  float: left;
+  min-width: 80px;
+  min-height: 50px;
+  font-size: 15pt;
+  padding-top: 3px;
+  
 }
 
 .select-box {
@@ -266,7 +342,7 @@
     padding: 10px 7px;
     border-radius: 10px;
     
-    width: 1000%;
+    width: 600%;
     height: auto;
     left: 80%;
     top: 20%;
