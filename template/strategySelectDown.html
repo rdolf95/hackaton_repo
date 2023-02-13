@@ -78,6 +78,49 @@
       body, h1, h2, h3, h4, h5, h6, p, span {
     font-family: 'Noto Sans KR', sans-serif !important;
   }
+      .tooltip-link{
+          position: relative;
+          background-color: #aad;
+          border-radius: 10px;
+          border: 3px solid #eee;
+          padding: 10px;
+          box-sizing: border-box;
+      }
+      .tooltip-link[data-tooltip]:not([data-tooltip=""])::before {
+          content: attr(data-tooltip);
+          position: absolute;
+          background-color: rgba(0,0,0,0.8);
+          color: #fff;
+          padding: 10px 7px;
+          border-radius: 10px;
+          max-width: 300px;
+          width: 250%;
+          left: 25%;
+          bottom: 120%;
+          opacity: 0;
+          transition: all 0.5s linear;
+      }
+      .tooltip-link[data-tooltip]:not([data-tooltip=""])::after {
+          content: '';
+          border-width: 6px;
+          border-style: solid;
+          border-color: transparent;
+          border-top-color: rgba(0,0,0,0.5);
+          width: 0;
+          height: 0;
+          display: inline-block;
+          position: absolute;
+          left: 50%;
+          bottom: 90%;
+          transform: translate(-50%, 0);
+          opacity: 0;
+          transition: all 0.5s linear;
+          z-index: 1;
+      }
+      .tooltip-link:hover[data-tooltip]:not([data-tooltip=""])::before
+      , .tooltip-link:hover[data-tooltip]:not([data-tooltip=""])::after {
+          opacity: 1;
+      }
     </style>
 
     
@@ -182,9 +225,8 @@
         </div>
         <div class="col-md-6 p-4 ps-md-0">
           <h5 class="mt-0">풋옵션 사기</h5>
-          <p>기초자산 가격이 하락할 것으로 예상되면 풋옵션을 매수하여 시세차익을 얻을 수 있다. <br> 기초자산을 정해진 기간내(또는 정해진 일시)에 일정한 행사가격으로 매수할 수 있는 권리이다.</p>
 
-          <button type="button" class="btn btn-outline-light position-relative" style="background-color: rgb(236, 109, 30);" onclick = "location.href = '/buy_option'">
+          <button type="button" class="btn btn-outline-light position-relative tooltip-link" data-tooltip="기초자산 가격이 하락할 것으로 예상되면 풋옵션을 매수하여 시세차익을 얻을 수 있다. 기초자산을 정해진 기간내(또는 정해진 일시)에 일정한 행사가격으로 매수할 수 있는 권리이다." style="background-color: rgb(236, 109, 30);" onclick = "location.href = '/buy_option'">
             풋 사러 가기
             </a>
           </button>
@@ -199,8 +241,7 @@
           </div>
           <div class="col-md-6 p-4 ps-md-0">
             <h5 class="mt-0">콜옵션 팔기</h5>
-            <p>기초자산 가격이 작게 하락할 것으로 예상되면 콜옵션을 매도하여 시세차익을 얻을 수 있다. <br> 기초자산을 정해진 기간내(또는 정해진 일시)에 일정한 행사가격으로 매수할 수 있는 권리이다.</p>
-            <button type="button" class="btn btn-outline-light position-relative" style="background-color: rgb(236, 109, 30);" onclick = "location.href = '/buy_option'">
+            <button type="button" class="btn btn-outline-light position-relative tooltip-link" data-tooltip="기초자산 가격이 작게 하락할 것으로 예상되면 콜옵션을 매도하여 시세차익을 얻을 수 있다. 기초자산을 정해진 기간내(또는 정해진 일시)에 일정한 행사가격으로 매수할 수 있는 권리이다. " style="background-color: rgb(236, 109, 30);" onclick = "location.href = '/buy_option'">
               콜 팔러 가기
               <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                 <span class="visually-hidden">New alerts</span>
